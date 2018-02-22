@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 import Auth from '../modules/Auth';
 import { Route, withRouter } from 'react-router-dom';
 
@@ -27,12 +27,12 @@ class Header extends Component{
                 </div>
                 {Auth.isUserAuthenticated() ? (
                   <div className="col-md-4 divpad">
-                      <button className="btn btn-primary">View Profile</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <Link className="btn btn-primary" to={`/user/${this.props.userId}`}>View Profile</Link>&nbsp;
                       <button className="btn btn-primary" onClick={this.logoutUser}>Logout</button>
                   </div>
                 ):(
                   <div className="col-md-4 divpad">
-                      <Link className="btn btn-primary" to="/login">Login</Link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <Link className="btn btn-primary" to="/login">Login</Link>&nbsp;
                       <Link className="btn btn-primary" to="/signup">Signup</Link>
                   </div>
                 )}

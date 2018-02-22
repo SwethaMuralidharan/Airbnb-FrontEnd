@@ -56,3 +56,15 @@
     box-shadow: none;
     border-left: solid 1px #ccc;
 }
+.center-div{
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  flex-direction: column;
+}
+.headerstyle{
+border-radius: 25px;
+background-color: gray;
+padding: 10px;
+padding-left: 50px;
+}

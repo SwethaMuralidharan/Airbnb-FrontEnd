@@ -39,9 +39,6 @@ class LoginPage extends Component {
    * @param {object} event - the JavaScript event object
    */
   processForm(loggedinEmail,loggedinPassword) {
-    // prevent default action. in this case, action is the form submission event
-    // event.preventDefault();
-
     // create a string for an HTTP body message
     const email = encodeURIComponent(loggedinEmail);
     const password = encodeURIComponent(loggedinPassword);
@@ -53,31 +50,23 @@ class LoginPage extends Component {
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.responseType = 'json';
     xhr.addEventListener('load', () => {
-      if (xhr.status === 200) {
-        // success
+        if (xhr.status === 200) {
+          this.setState({
+            errors: {}
+          });
+          console.log(xhr.response);
+          Auth.authenticateUser(xhr.response.token);
+          Auth.saveUserId(xhr.response.user.id)
 
-        // change the component-container state
-        this.setState({
-          errors: {}
-        });
-
-        // save the token
-        Auth.authenticateUser(xhr.response.token);
-
-
-        // change the current URL to /
-        this.props.history.push('/');
-      } else {
-        // failure
-
-        // change the component state
-        const errors = xhr.response.errors ? xhr.response.errors : {};
-        errors.summary = xhr.response.message;
-
-        this.setState({
-          errors
-        });
-      }
+          this.props.banana(xhr.response.user.id)
+          this.props.history.push(`/user/${xhr.response.user.id}`);
+        } else {
+              const errors = xhr.response.errors ? xhr.response.errors : {};
+              errors.summary = xhr.response.message;
+              this.setState({
+                errors
+              });
+        }
     });
     xhr.send(formData);
   }

@@ -9,6 +9,14 @@ class Auth {
     localStorage.setItem('token', token);
   }
 
+  static saveUserId(userId){
+    localStorage.setItem('user_id', userId)
+  }
+
+  static getUserId(){
+    return localStorage.getItem('user_id');
+  }
+
   /**
    * Check if a user is authenticated - check if a token is saved in Local Storage
    *
