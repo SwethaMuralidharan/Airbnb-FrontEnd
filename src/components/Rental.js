@@ -31,24 +31,42 @@ class Rental extends Component{
       });
   }
   render(){
-  console.log(this.props);
+  console.log(this.state.RentalInfo.image_urls);
 // get rental id from url
 // make get request
 // set fetched rental to state
 // render state
       return (
+        <div className="container">
+        <div className="row">
+        <div id="carouselExampleControls" className="carousel slide col-md-6 offset-md-3" data-ride="carousel" >
+          <div className="carousel-inner">
+             {this.state.RentalInfo && this.state.RentalInfo.image_urls && this.state.RentalInfo.image_urls.map((each_img,index)=>{
+              return <div className={(index==0 ? 'carousel-item active' : 'carousel-item')}>
+                 <img src={each_img} className="setimgwidth"/>
+             </div>
+              })}
+          </div>
+          <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span className="sr-only">Previous</span>
+          </a>
+          <a className="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+            <span className="sr-only">Next</span>
+          </a>
+          </div>
+          <div className="divpad">
               <ul>
                   <li>Address : {this.state.RentalInfo && this.state.RentalInfo.address}</li>
                   <li>Number of Rooms : {this.state.RentalInfo && this.state.RentalInfo.rooms}</li>
                   <li>Number of Bathrooms : {this.state.RentalInfo && this.state.RentalInfo.bathrooms}</li>
                   <li>Amenities : {this.state.RentalInfo && this.state.RentalInfo.amenities}</li>
                   <li>Price per night : ${this.state.RentalInfo && this.state.RentalInfo.price_per_night}</li>
-                  <li>{this.state.RentalInfo && this.state.RentalInfo.image_urls && this.state.RentalInfo.image_urls.map(each_img=>{
-                        return <div className="divpad">
-                                  <img src={each_img} height="200" width="400"/>
-                               </div>})}
-                  </li>
               </ul>
+          </div>
+          </div>
+          </div>
             )
   }
 }
