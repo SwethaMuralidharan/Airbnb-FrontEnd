@@ -42,11 +42,11 @@ class Profile extends Component{
           <div className="headerstyle"><h4>Places you Own</h4></div>
           <div className="center-div">
             <div className="divpad">
-              <button className="btn btn-primary">Add New Rental</button>
+              <Link to={`/users/${this.state.UserInfo._id}/rentals`} className="btn btn-primary"> Add New Rental</Link>
             </div>
             <div className="divpad">
             {this.state.UserInfo.rentals && this.state.UserInfo.rentals.map(each_rental=>{
-                return <Link to={`/users/${this.state.UserInfo._id}/rentals/${each_rental._id}`}>{each_rental.address}</Link>
+                return <div><Link to={`/users/${this.state.UserInfo._id}/rentals/${each_rental._id}`}>{each_rental.address}</Link></div>
             })}
             </div>
           </div>

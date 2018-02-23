@@ -3,7 +3,7 @@ import Auth from '../modules/Auth';
 import {Link} from 'react-router-dom';
 import '../App.css';
 import './Profile.js';
-
+import PostRentalForm from './PostRentalForm.js';
 class Rental extends Component{
   constructor() {
     super();
@@ -43,7 +43,7 @@ class Rental extends Component{
           <div className="carousel-inner">
              {this.state.RentalInfo && this.state.RentalInfo.image_urls && this.state.RentalInfo.image_urls.map((each_img,index)=>{
               return <div className={(index==0 ? 'carousel-item active' : 'carousel-item')}>
-                 <img src={each_img} className="setimgwidth"/>
+                        <img src={each_img} className="setimgwidth"/>
              </div>
               })}
           </div>
@@ -56,6 +56,8 @@ class Rental extends Component{
             <span className="sr-only">Next</span>
           </a>
           </div>
+          </div>
+          <div className="row">
           <div className="divpad">
               <ul>
                   <li>Address : {this.state.RentalInfo && this.state.RentalInfo.address}</li>
@@ -66,7 +68,9 @@ class Rental extends Component{
               </ul>
           </div>
           </div>
+          {/* <PostRentalForm userID={this.props.match.params.user_id}/> */}
           </div>
+
             )
   }
 }

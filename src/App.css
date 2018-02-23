@@ -28,6 +28,7 @@
 }
 .divpad{
   padding-top: 30px;
+  padding-left:20px;
 }
 #custom-search-input{
     padding: 3px;
@@ -70,4 +71,8 @@ padding-left: 50px;
 }
 .setimgwidth{
 max-width: 100%;
+}
+.centerItem{
+border: 1px solid black;
+width:2%;
 }
