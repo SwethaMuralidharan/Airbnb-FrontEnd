@@ -10,12 +10,15 @@ class IncrementDecrement extends Component{
     this.DecrementItem=this.DecrementItem.bind(this);
   }
   IncrementItem(e){
-    this.setState({ clicks: this.state.clicks + 1 });
-    this.props.updatecount(this.state.clicks);
+    // use setState callback
+    this.setState({ clicks: this.state.clicks + 1 },
+    () => this.props.updatecount(this.state.clicks));
   }
   DecrementItem(e){
-    this.setState({ clicks: this.state.clicks - 1 });
-    this.props.updatecount(this.state.clicks);
+    // use setState callback
+    this.setState({ clicks: this.state.clicks - 1 },
+    ()=>this.props.updatecount(this.state.clicks));
+    ;
   }
   render(){
     return (

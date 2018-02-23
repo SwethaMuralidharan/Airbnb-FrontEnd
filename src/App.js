@@ -14,6 +14,7 @@ import Profile from './components/Profile.js';
 import Rental from './components/Rental.js';
 import Auth from './modules/Auth';
 import PostRentalForm from './components/PostRentalForm.js';
+import RentalSearchPage from './components/RentalSearchPage.js';
 
 class App extends Component {
   constructor() {
@@ -48,6 +49,7 @@ class App extends Component {
     return (
       <div>
         <Header userId={ this.state.loggedInUserId } />
+        {/* <MainSearchPage userId={ this.state.loggedInUserId }/> */}
         <Switch>
           <Route exact path='/' component={ MainSearchPage }/>
           <Route path='/signup' component={ SignUpPage }/>
@@ -57,6 +59,7 @@ class App extends Component {
           <Route path='/user/:user_id' component={ Profile }/>
           <Route path='/users/:user_id/rentals/:rental_id' component={ Rental }/>
           <Route path='/users/:user_id/rentals' component={ PostRentalForm }/>
+          <Route path='/search/:searchTerm' component={ RentalSearchPage }/>
         </Switch>
       </div>
     )

@@ -32,10 +32,6 @@ class Rental extends Component{
   }
   render(){
   console.log(this.state.RentalInfo.image_urls);
-// get rental id from url
-// make get request
-// set fetched rental to state
-// render state
       return (
         <div className="container">
         <div className="row">
@@ -63,12 +59,12 @@ class Rental extends Component{
                   <li>Address : {this.state.RentalInfo && this.state.RentalInfo.address}</li>
                   <li>Number of Rooms : {this.state.RentalInfo && this.state.RentalInfo.rooms}</li>
                   <li>Number of Bathrooms : {this.state.RentalInfo && this.state.RentalInfo.bathrooms}</li>
+                  <li>Maximum guests : {this.state.RentalInfo && this.state.RentalInfo.max_guest}</li>
                   <li>Amenities : {this.state.RentalInfo && this.state.RentalInfo.amenities}</li>
                   <li>Price per night : ${this.state.RentalInfo && this.state.RentalInfo.price_per_night}</li>
               </ul>
           </div>
           </div>
-          {/* <PostRentalForm userID={this.props.match.params.user_id}/> */}
           </div>
 
             )
