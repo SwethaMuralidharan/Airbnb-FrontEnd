@@ -42,21 +42,27 @@ class RentalSearchPage extends Component{
   }
   getSearchResults(){
     console.log(Auth.getToken());
-    fetch(`http://localhost:8080/api/rentals/${this.props.match.params.searchTerm}?max_guests=${this.state.guestcount}&price_per_night=${this.state.price}`,{
-            headers: {
-              Accept: 'application/json',
-              Origin: '',
-              authorization: 'Bearer ' + Auth.getToken(),
-              },
-            method: 'GET'
-          }
-          )
-      .then(res => res.json())
-      .then(json => {
-        console.log(json);
-        this.setState({RentalInfo:json});
-      });
+    if(this.state.guestcount!==0 && this.state.price!==undefined){
+      fetch(`http://localhost:8080/api/rentals/${this.props.match.params.searchTerm}?max_guests=${this.state.guestcount}&price_per_night=${this.state.price}`,{
+              headers: {
+                Accept: 'application/json',
+                Origin: '',
+                authorization: 'Bearer ' + Auth.getToken(),
+                },
+              method: 'GET'
+            }
+            )
+        .then(res => res.json())
+        .then(json => {
+          console.log(json);
+          this.setState({RentalInfo:json});
+        });
+    }
+    else{
+      alert("Please choose both price range and number of guests.");
+    }
   }
+
   render(){
     console.log(this.state.RentalInfo);
     console.log("from date:",this.state.from);

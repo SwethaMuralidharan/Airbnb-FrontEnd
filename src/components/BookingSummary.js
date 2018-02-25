@@ -14,6 +14,23 @@ class BookingSummary extends Component{
       BookingInfo:[],
       BookedRentalInfo:[]
     }
+    this.deleteBooking=this.deleteBooking.bind(this);
+  }
+  deleteBooking(booking_id){
+    fetch(`http://localhost:8080/api/users/${Auth.getUserId()}/bookings/${booking_id}`,
+    {
+      method: 'delete',
+      headers: {
+        Accept: 'application/json',
+        Origin: '',
+        authorization: 'Bearer ' + Auth.getToken(),
+      }
+    }).then((response) => {
+      this.setState({
+        BookingInfo: this.state.BookingInfo.bookings.filter(booking => booking._id !== booking_id)
+      });
+    });
+    // this.props.history.push(`/users/${Auth.getUserId()}/bookings`);
   }
   componentDidMount(){
     fetch(`http://localhost:8080/api/users/${Auth.getUserId()}/bookings`,{
@@ -67,7 +84,7 @@ class BookingSummary extends Component{
                                     <button className="btn btn-info btn-round">Edit</button>
                                   </div>
                                   <div className="col-sm-3 divpad">
-                                    <button className="btn btn-info btn-round">Delete</button>
+                                    <button className="btn btn-info btn-round" onClick={()=>this.deleteBooking(each_booking._id)}>Delete</button>
                                   </div>
                                 </div>
                             </div>
