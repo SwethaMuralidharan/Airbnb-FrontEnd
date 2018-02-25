@@ -137,7 +137,7 @@ class Rental extends Component{
                       <label>Guests:</label>
                       <IncrementDecrement updatecount={this.Updateguestcount}/>
                       <label>Total Cost : </label><label>{this.state.totalcost}</label>
-                      <div><button className="btn btn-primary">Book</button></div>
+                      <div><button className="btn btn-primary">Save Booking</button></div>
                   </form>
               </div>
           </div>

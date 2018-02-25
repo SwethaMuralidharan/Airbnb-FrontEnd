@@ -3,6 +3,7 @@ import Auth from '../modules/Auth';
 // import {Link} from 'react-router-dom';
 import '../App.css';
 import './Profile.js';
+import BookingSection from './BookingSection.js';
 // import PostRentalForm from './PostRentalForm.js';
 // import DatePicker from './DatePicker.js';
 // import IncrementDecrement from './IncrementDecrement.js';
@@ -10,11 +11,54 @@ import './Profile.js';
 class BookingSummary extends Component{
   constructor(){
     super();
+
     this.state={
       BookingInfo:[],
-      BookedRentalInfo:[]
+      BookedRentalInfo:[],
+      editClicked:false,
+      from:undefined,
+      to:undefined,
+      guestcount:0,
+      totalcost:0,
+      edited_booking_id:null
     }
     this.deleteBooking=this.deleteBooking.bind(this);
+    this.editBooking=this.editBooking.bind(this);
+    this.showEditSection=this.showEditSection.bind(this);
+  }
+  showEditSection(booking_id){
+    this.setState({
+        editClicked:true,
+        edited_booking_id:booking_id
+    })
+  }
+  editBooking(fromvalue,tovalue,guestcountvalue,totalcostvalue){
+    this.setState({
+      from:fromvalue,
+      to:tovalue,
+      guestcount:guestcountvalue,
+      totalcost:totalcostvalue,
+      editClicked:false
+    },()=>
+    fetch(`http://localhost:8080/api/users/${Auth.getUserId()}/bookings/${this.state.edited_booking_id}`, {
+        method: 'PUT',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+           authorization: 'Bearer ' + Auth.getToken(),
+        },
+        body: JSON.stringify({
+          user_id:Auth.getUserId(),
+          start_date:this.state.from,
+          end_date:this.state.to,
+          total_cost:this.state.totalcost,
+          total_guests:this.state.guestcount
+          })
+        }).then((res) => {
+           return res.json()
+          }).then((json) => {
+             this.setState({BookingInfo: json});
+          }))
   }
   deleteBooking(booking_id){
     fetch(`http://localhost:8080/api/users/${Auth.getUserId()}/bookings/${booking_id}`,
@@ -51,7 +95,7 @@ class BookingSummary extends Component{
   render(){
     console.log(this.state.BookingInfo);
     return (<div className="divpad">
-              <h4 className="center-div">Booking Summary Page</h4>
+              <h4 className="center-div">Booking Summary</h4>
               {this.state.BookingInfo.bookings && this.state.BookingInfo.bookings.map(each_booking=>{
                   return (
                             <div key={each_booking._id} className="container">
@@ -81,11 +125,14 @@ class BookingSummary extends Component{
                                   <div className="col-sm-3"></div>
                                   <div className="col-sm-3"></div>
                                   <div className="col-sm-3 divpad">
-                                    <button className="btn btn-info btn-round">Edit</button>
+                                    <button className="btn btn-info btn-round" onClick={()=>this.showEditSection(each_booking._id)}>Edit</button>
                                   </div>
                                   <div className="col-sm-3 divpad">
                                     <button className="btn btn-info btn-round" onClick={()=>this.deleteBooking(each_booking._id)}>Delete</button>
                                   </div>
+                                </div>
+                                <div>
+                                  {(this.state.editClicked===true)?<BookingSection booking_id={each_booking._id} price={each_booking.rental_id.price_per_night} editBooking={this.editBooking}/>:null}
                                 </div>
                             </div>
                         )
