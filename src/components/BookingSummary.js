@@ -4,6 +4,7 @@ import Auth from '../modules/Auth';
 import '../App.css';
 import './Profile.js';
 import BookingSection from './BookingSection.js';
+import $ from 'jquery';
 // import PostRentalForm from './PostRentalForm.js';
 // import DatePicker from './DatePicker.js';
 // import IncrementDecrement from './IncrementDecrement.js';
@@ -15,7 +16,7 @@ class BookingSummary extends Component{
     this.state={
       BookingInfo:[],
       BookedRentalInfo:[],
-      editClicked:false,
+      // editClicked:false,
       from:undefined,
       to:undefined,
       guestcount:0,
@@ -28,9 +29,11 @@ class BookingSummary extends Component{
   }
   showEditSection(booking_id){
     this.setState({
-        editClicked:true,
+        // editClicked:true,
         edited_booking_id:booking_id
     })
+    document.getElementById(booking_id).classList.add("showEditdiv");
+    console.log(document.getElementById(booking_id));
   }
   editBooking(fromvalue,tovalue,guestcountvalue,totalcostvalue){
     this.setState({
@@ -38,7 +41,7 @@ class BookingSummary extends Component{
       to:tovalue,
       guestcount:guestcountvalue,
       totalcost:totalcostvalue,
-      editClicked:false
+      // editClicked:false
     },()=>
     fetch(`http://localhost:8080/api/users/${Auth.getUserId()}/bookings/${this.state.edited_booking_id}`, {
         method: 'PUT',
@@ -58,6 +61,7 @@ class BookingSummary extends Component{
            return res.json()
           }).then((json) => {
              this.setState({BookingInfo: json});
+             document.getElementById(this.state.edited_booking_id).classList.remove("showEditdiv");
           }))
   }
   deleteBooking(booking_id){
@@ -100,39 +104,41 @@ class BookingSummary extends Component{
                   return (
                             <div key={each_booking._id} className="container">
                                 <div className="row">
-                                    <div className="col-sm-3 outlineborder">
-                                      Rental Location: {each_booking.rental_id && each_booking.rental_id.address}
-                                    </div>
-                                    <div className="col-sm-3 outlineborder">
-                                      Booking Date : {each_booking.booking_date}
-                                    </div>
+                                      <div className="col-sm-3 outlineborder">
+                                        Rental Location: {each_booking.rental_id && each_booking.rental_id.address}
+                                      </div>
+                                      <div className="col-sm-3 outlineborder">
+                                        Booking Date : {each_booking.booking_date}
+                                      </div>
                                 </div>
                                 <div className="row">
-                                    <div className="col-sm-3 outlineborder">
-                                      Date of arrival : {each_booking.start_date}
-                                    </div>
-                                    <div className="col-sm-3 outlineborder">
-                                      Date of leaving : {each_booking.end_date}
-                                    </div>
-                                    <div className="col-sm-3 outlineborder">
-                                      Total Guests : {each_booking.total_guests}
-                                    </div>
-                                    <div className="col-sm-3 outlineborder">
-                                      Total Cost : {each_booking.total_cost}
-                                    </div>
+                                      <div className="col-sm-3 outlineborder">
+                                        Date of arrival : {each_booking.start_date}
+                                      </div>
+                                      <div className="col-sm-3 outlineborder">
+                                        Date of leaving : {each_booking.end_date}
+                                      </div>
+                                      <div className="col-sm-3 outlineborder">
+                                        Total Guests : {each_booking.total_guests}
+                                      </div>
+                                      <div className="col-sm-3 outlineborder">
+                                        Total Cost : {each_booking.total_cost}
+                                      </div>
                                 </div>
                                 <div className="row">
-                                  <div className="col-sm-3"></div>
-                                  <div className="col-sm-3"></div>
-                                  <div className="col-sm-3 divpad">
-                                    <button className="btn btn-info btn-round" onClick={()=>this.showEditSection(each_booking._id)}>Edit</button>
-                                  </div>
-                                  <div className="col-sm-3 divpad">
-                                    <button className="btn btn-info btn-round" onClick={()=>this.deleteBooking(each_booking._id)}>Delete</button>
-                                  </div>
+                                      <div className="col-sm-3"></div>
+                                      <div className="col-sm-3"></div>
+                                      <div className="col-sm-3 divpad">
+                                        <button className="btn btn-info btn-round" onClick={()=>this.showEditSection(each_booking._id)}>Edit</button>
+                                      </div>
+                                      <div className="col-sm-3 divpad">
+                                        <button className="btn btn-info btn-round" onClick={()=>this.deleteBooking(each_booking._id)}>Delete</button>
+                                      </div>
                                 </div>
-                                <div>
-                                  {(this.state.editClicked===true)?<BookingSection booking_id={each_booking._id} price={each_booking.rental_id.price_per_night} editBooking={this.editBooking}/>:null}
+                                <div className="row hideEditdiv" id={each_booking._id}>
+                                      <div className="col-sm-12">
+                                          <BookingSection booking_id={each_booking._id} price={each_booking.rental_id.price_per_night} editBooking={this.editBooking}/>
+                                      </div>
                                 </div>
                             </div>
                         )

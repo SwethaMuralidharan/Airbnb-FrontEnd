@@ -83,3 +83,9 @@ padding:10px;
 .header{
 background-color: black;
 }
+.hideEditdiv{
+display: none;
+}
+.showEditdiv{
+display:block;
+}
