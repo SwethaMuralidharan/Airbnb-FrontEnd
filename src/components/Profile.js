@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Auth from '../modules/Auth';
 import {Link} from 'react-router-dom';
 import '../App.css';
-import Rental from './Rental';
+// import Rental from './Rental';
 class Profile extends Component{
   constructor() {
     super();
@@ -30,7 +30,7 @@ class Profile extends Component{
   render(){
     console.log(this.props);
     return (
-      <div className="col-md-6">
+      <div className="col-md-6 divpad setbg">
         <div className="headerstyle"><h4>User Name : {this.state.UserInfo.name}</h4></div>
         <ul>
           <li>Gender : {this.state.UserInfo.gender}</li>
@@ -46,14 +46,14 @@ class Profile extends Component{
             </div>
             <div className="divpad">
             {this.state.UserInfo.rentals && this.state.UserInfo.rentals.map(each_rental=>{
-                return <div><Link to={`/users/${this.state.UserInfo._id}/rentals/${each_rental._id}`}>{each_rental.address}</Link></div>
+                return <div key={each_rental._id}><Link to={`/users/${this.state.UserInfo._id}/rentals/${each_rental._id}`}>{each_rental.address}</Link></div>
             })}
             </div>
           </div>
         </div>
         <div className="headerstyle"><h4>Booking Summary</h4></div>
         <div className="center-div divpad">
-          <button className="btn btn-primary">View My Bookings</button>
+          <Link to={`/users/${Auth.getUserId()}/bookings`} className="btn btn-primary">View My Bookings</Link>
         </div>
       </div>
     )

@@ -23,9 +23,9 @@ class IncrementDecrement extends Component{
   render(){
     return (
           <div>
-            <button className="btn btn-primary btn-round" onClick={this.DecrementItem}> - </button>
+            <span className="btn btn-primary btn-round" onClick={this.DecrementItem}> - </span>
             <input type="text" value={this.state.clicks} className="centerItem"/>
-            <button className="btn btn-primary btn-round" onClick={this.IncrementItem}> + </button>
+            <span className="btn btn-primary btn-round" onClick={this.IncrementItem}> + </span>
           </div>
           )
   }

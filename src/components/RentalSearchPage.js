@@ -2,12 +2,10 @@ import React, { Component } from 'react';
 import Auth from '../modules/Auth';
 import {Link} from 'react-router-dom';
 import '../App.css';
-import MainSearchPage from './MainSearchPage.js';
-import DayPicker from 'react-day-picker';
+// import MainSearchPage from './MainSearchPage.js';
+// import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 import DatePicker from './DatePicker.js';
-import $ from 'jquery';
-import slider from 'jquery-ui';
 import HorizontalSlider from './HorizontalSlider.js';
 import 'react-rangeslider/lib/index.css';
 import IncrementDecrement from './IncrementDecrement.js';
@@ -65,8 +63,7 @@ class RentalSearchPage extends Component{
     console.log("to date:",this.state.to);
     console.log("price",this.state.price);
     console.log("guestcount",this.state.guestcount);
-    var routeURL="/users/"
-    return <div>
+    return (<div>
 
               <div className="headerstyle">Search results for {this.props.match.params.searchTerm}</div>
               <div className="container">
@@ -93,9 +90,9 @@ class RentalSearchPage extends Component{
                 </div>
               </div>
               {(this.state.RentalInfo).map(each_rental=>{
-                      return <div className="center-div" key={each_rental}><Link to={`/users/${each_rental.user_id}/rentals/${each_rental._id}`}><img src={each_rental.image_urls} height="100" width="150"/>  {each_rental.address} - ${each_rental.price_per_night}</Link></div>
+                      return <div className="center-div divpad" key={each_rental}><Link to={`/users/${each_rental.user_id}/rentals/${each_rental._id}`}><img src={each_rental.image_urls} height="100" alt="rental_image"  width="150"/>  {each_rental.address} - ${each_rental.price_per_night}</Link></div>
               })}
-          </div>
+          </div>)
   }
 }
 export default RentalSearchPage;

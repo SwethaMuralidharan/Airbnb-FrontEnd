@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import IncrementDecrement from './IncrementDecrement.js';
 import Auth from '../modules/Auth';
-import { Route, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class PostRentalForm extends Component{
   constructor(){
@@ -78,13 +78,14 @@ class PostRentalForm extends Component{
       console.log(res.json);
       return res.json()
     }).then((json) => {
-      this.props.history.push(`/user/${this.props.match.params.user_id}`);
+      this.props.history.push(`/users/${Auth.getUserId()}`);
     })
   }
   render(){
     return (
 
             <div className="divpad">
+              <form onSubmit ={this.PostRental}>
               <h4>Post your rental as a listing in Airbnb!</h4>
               <div className="divpad">
                 <p>How many guests can your place accomodate?</p>
@@ -119,8 +120,9 @@ class PostRentalForm extends Component{
                 <textarea value={this.state.image_urls} rows="3" cols="50" onChange={e => this.setState({ image_urls: e.target.value})}/>
               </div>
               <div className="divpad">
-                <button className="btn btn-primary btn-round" onClick={this.PostRental}>POST</button>
+                <button className="btn btn-primary btn-round">POST</button>
               </div>
+            </form>
             </div>
           )
   }

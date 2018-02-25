@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import ReactDom from 'react-dom';
 // import { BrowserRouter } from 'react-router-dom';
-import MyRoutes from './routes.js';
+// import MyRoutes from './routes.js';
 import './App.css';
 import { Switch, Route} from 'react-router';
 import Header from './components/Header.js';
@@ -15,6 +15,8 @@ import Rental from './components/Rental.js';
 import Auth from './modules/Auth';
 import PostRentalForm from './components/PostRentalForm.js';
 import RentalSearchPage from './components/RentalSearchPage.js';
+import BookingSummary from './components/BookingSummary';
+
 
 class App extends Component {
   constructor() {
@@ -56,10 +58,15 @@ class App extends Component {
           <Route path='/login' render={ MyLoginPage } />
           <Route path='/dashboard' component={ DashboardPage }/>
           <Route path='/home' component={ HomePage}/>
-          <Route path='/user/:user_id' component={ Profile }/>
+
+          <Route path='/users/:user_id/bookings' component={ BookingSummary }/>
           <Route path='/users/:user_id/rentals/:rental_id' component={ Rental }/>
           <Route path='/users/:user_id/rentals' component={ PostRentalForm }/>
+          <Route path='/users/:user_id' component={ Profile }/>
+
+
           <Route path='/search/:searchTerm' component={ RentalSearchPage }/>
+
         </Switch>
       </div>
     )

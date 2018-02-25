@@ -59,7 +59,7 @@ class LoginPage extends Component {
           Auth.saveUserId(xhr.response.user.id)
 
           this.props.banana(xhr.response.user.id)
-          this.props.history.push(`/user/${xhr.response.user.id}`);
+          this.props.history.push(`/users/${xhr.response.user.id}`);
         } else {
               const errors = xhr.response.errors ? xhr.response.errors : {};
               errors.summary = xhr.response.message;

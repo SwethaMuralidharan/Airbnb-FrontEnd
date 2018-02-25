@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import RentalSearchPage from './RentalSearchPage.js';
+// import RentalSearchPage from './RentalSearchPage.js';
 
 class MainSearchPage extends Component {
   constructor(){

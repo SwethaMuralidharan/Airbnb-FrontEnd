@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './components/Header.js';
+// import Header from './components/Header.js';
 import HomePage from './components/HomePage.js';
 import DashboardPage from './containers/DashboardPage.js';
 import LoginPage from './containers/LoginPage.js';
