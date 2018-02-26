@@ -2,34 +2,15 @@ import React, { Component } from 'react';
 import SignUpForm from '../components/SignUpForm.js';
 
 class SignUpPage extends Component {
-
-  /**
-   * Class constructor.
-   */
   constructor(props, context) {
     super(props, context);
-
-    // set the initial component state
     this.state = {
       errors: {},
-      // user: {
-      //   email: '',
-      //   name: '',
-      //   password: ''
-      // }
     };
-
     this.processForm = this.processForm.bind(this);
-    this.changeUser = this.changeUser.bind(this);
+    // this.changeUser = this.changeUser.bind(this);
   }
-
-  /**
-   * Process the form.
-   *
-   * @param {object} event - the JavaScript event object
-   */
   processForm(inputName, inputEmail, inputPassword,inputDob,inputGender,inputAddress) {
-debugger;
     // create a string for an HTTP body message
     const name = encodeURIComponent(inputName);
     const email = encodeURIComponent(inputEmail);
@@ -47,27 +28,17 @@ debugger;
     xhr.responseType = 'json';
 
     xhr.addEventListener('load', () => {
-
       if (xhr.status === 200) {
         // success
-
-        // change the component-container state
         this.setState({
           errors: {}
         });
-
-        // set a message
         localStorage.setItem('successMessage', xhr.response.message);
-
-        // make a redirect
-        // this.context.router.replace('/login');
         this.props.history.push('/login');
       } else {
-        // failure
-
+        //failure
         const errors = xhr.response.errors ? xhr.response.errors : {};
         errors.summary = xhr.response.message;
-
         this.setState({
           errors
         });
@@ -75,40 +46,24 @@ debugger;
     });
     xhr.send(formData);
   }
-
-  /**
-   * Change the user object.
-   *
-   * @param {object} event - the JavaScript event object
-   */
-  changeUser(event) {
-    const field = event.target.name;
-    const user = this.state.user;
-    user[field] = event.target.value;
-
-    this.setState({
-      user
-    });
-  }
-
-  /**
-   * Render the component.
-   */
+  // changeUser(event) {
+  //   const field = event.target.name;
+  //   const user = this.state.user;
+  //   user[field] = event.target.value;
+  //
+  //   this.setState({
+  //     user
+  //   });
+  // }
   render() {
     return (
       <SignUpForm
         onFormSubmit={this.processForm}
-        onChange={this.changeUser}
         errors={this.state.errors}
-        user={this.state.user}
+        // onChange={this.changeUser}
+        // user={this.state.user}
       />
     );
   }
-
 }
-
-// SignUpPage.contextTypes = {
-//   router: PropTypes.object.isRequired
-// };
-
 export default SignUpPage;

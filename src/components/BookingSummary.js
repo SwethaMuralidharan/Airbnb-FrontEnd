@@ -4,7 +4,6 @@ import '../App.css';
 import './Profile.js';
 import BookingSection from './BookingSection.js';
 
-
 class BookingSummary extends Component{
   constructor(){
     super();
@@ -12,7 +11,6 @@ class BookingSummary extends Component{
     this.state={
       BookingInfo:[],
       BookedRentalInfo:[],
-      // editClicked:false,
       from:undefined,
       to:undefined,
       guestcount:0,
@@ -25,19 +23,16 @@ class BookingSummary extends Component{
   }
   showEditSection(booking_id){
     this.setState({
-        // editClicked:true,
         edited_booking_id:booking_id
     })
     document.getElementById(booking_id).classList.add("showEditdiv");
-    console.log(document.getElementById(booking_id));
   }
   updateBooking(fromvalue,tovalue,guestcountvalue,totalcostvalue){
     this.setState({
       from:fromvalue,
       to:tovalue,
       guestcount:guestcountvalue,
-      totalcost:totalcostvalue,
-      // editClicked:false
+      totalcost:totalcostvalue
     },()=>
     fetch(`${process.env.REACT_APP_BACKEND_URL}/api/users/${Auth.getUserId()}/bookings/${this.state.edited_booking_id}`, {
         method: 'PUT',
@@ -61,8 +56,7 @@ class BookingSummary extends Component{
           }))
   }
   deleteBooking(booking_id){
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/users/${Auth.getUserId()}/bookings/${booking_id}`,
-    {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/users/${Auth.getUserId()}/bookings/${booking_id}`,{
       method: 'delete',
       headers: {
         Accept: 'application/json',
@@ -74,7 +68,6 @@ class BookingSummary extends Component{
         BookingInfo: {bookings: this.state.BookingInfo.bookings.filter(booking => booking._id !== booking_id)}
       });
     });
-    // this.props.history.push(`/users/${Auth.getUserId()}/bookings`);
   }
   componentDidMount(){
     fetch(`${process.env.REACT_APP_BACKEND_URL}/api/users/${Auth.getUserId()}/bookings`,{
@@ -85,10 +78,9 @@ class BookingSummary extends Component{
               },
             method: 'GET'
           }
-          )
+        )
       .then(res => res.json())
       .then(json => {
-        // console.log(json);
         this.setState({BookingInfo: json});
       });
   }

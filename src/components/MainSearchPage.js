@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-// import RentalSearchPage from './RentalSearchPage.js';
 import Splash from './Splash.js';
-
 
 class MainSearchPage extends Component {
   constructor(){
@@ -12,7 +10,6 @@ class MainSearchPage extends Component {
     }
   }
   render(){
-    console.log(this.props);
     return(
       <div className="container divpad">
           <div className="row">

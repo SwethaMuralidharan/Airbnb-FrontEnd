@@ -58,50 +58,58 @@
     border-left: solid 1px #ccc;
 }
 .center-div{
-  display:flex;
-  justify-content: center;
-  align-items:center;
-  flex-direction: column;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: column;
 }
 .headerstyle{
-border-radius: 25px;
-background-color: #c1aea0;
-padding: 10px;
-padding-left: 50px;
+    border-radius: 25px;
+    background-color: #c1aea0;
+    padding: 10px;
+    padding-left: 50px;
+}
+.searchheader{
+    background-color: #c1aea0;
+    margin-top: 10px;
+    border-radius: 25px;
 }
 .setimgwidth{
-max-width: 100%;
+    max-width: 100%;
 }
 .centerItem{
-border: 1px solid black;
-width:5%;
+    border: 1px solid black;
+    width:5%;
 }
 .outlineborder{
-border:1px solid black;
-padding:10px;
+    border:1px solid black;
+    padding:10px;
 }
 .header{
-background-color: #c1aea0;
+    background-color: #c1aea0;
 }
 .hideEditdiv{
-display: none;
+    display: none;
 }
 .showEditdiv{
-display:block;
+    display:block;
 }
 .setbodybg{
-background-color:#edeae8;
+    background-color:#edeae8;
 }
 .alertmsg{
-color: red;
+    color: red;
 }
 .eachmapdiv{
-padding-top: 20px;
-margin-top: 20px;
+    padding-top: 20px;
+    margin-top: 20px;
 }
 .top-pad{
-padding-top:10px;
+    padding-top:10px;
 }
 .left-pad{
-padding-left: 20px;
+    padding-left: 20px;
+}
+.success-message{
+    color:green;
 }

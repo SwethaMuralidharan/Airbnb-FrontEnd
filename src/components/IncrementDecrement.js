@@ -10,23 +10,21 @@ class IncrementDecrement extends Component{
     this.DecrementItem=this.DecrementItem.bind(this);
   }
   IncrementItem(e){
-    // use setState callback
     this.setState({ clicks: this.state.clicks + 1 },
     () => this.props.updatecount(this.state.clicks));
   }
   DecrementItem(e){
-    // use setState callback
     this.setState({ clicks: this.state.clicks - 1 },
     ()=>this.props.updatecount(this.state.clicks));
     ;
   }
   render(){
     return (
-          <div>
-            <span className="btn btn-primary btn-round" onClick={this.DecrementItem}> - </span>
-            <input type="text" value={this.state.clicks} className="centerItem"/>
-            <span className="btn btn-primary btn-round" onClick={this.IncrementItem}> + </span>
-          </div>
+              <div>
+                <span className="btn btn-primary btn-round" onClick={this.DecrementItem}> - </span>
+                <input type="text" value={this.state.clicks} className="centerItem"/>
+                <span className="btn btn-primary btn-round" onClick={this.IncrementItem}> + </span>
+              </div>
           )
   }
 }

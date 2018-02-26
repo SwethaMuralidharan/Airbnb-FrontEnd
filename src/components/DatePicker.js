@@ -66,7 +66,6 @@ export default class DatePicker extends React.Component {
             numberOfMonths: 2,
           }}
           onDayChange={this.handleFromChange}
-          // onDayChange={this.props.changefromdate}
         />{' '}
         —{' '}
         <span className="InputFromTo-to">

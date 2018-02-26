@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-// import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-// import RaisedButton from 'material-ui/RaisedButton';
-// import TextField from 'material-ui/TextField';
+import '../App.css';
 
 class SignUpForm extends Component{
   constructor(){
@@ -60,80 +58,79 @@ class SignUpForm extends Component{
     render(){
       return (
         <div className="container divpad">
-          <form action="/" onSubmit={ this.sendUserInfo }>
-            <h2 className="card-heading">Sign Up</h2>
+          <div className="row">
+            <div className="col-md-6 offset-md-3">
+              <form action="/" onSubmit={ this.sendUserInfo }>
+                <h2 className="card-heading">Sign Up</h2>
 
-            {this.props.errors.summary && <p className="error-message">{this.props.errors.summary}</p>}
+                {this.props.errors.summary && <p className="error-message alertmsg">{this.props.errors.summary}</p>}
 
-            <div className="form-group">
-              <label>User Name</label>
-              <input className="form-control"
-                type="text"
-                // errorText={this.props.errors.name}
-                onChange={this.onUsernameChange}
-                value={this.state.currentUsername}
-              />
+                <div className="form-group">
+                  <label>User Name</label>
+                  <p className="error-message alertmsg">{ this.props.errors.name }</p>
+                  <input className="form-control"
+                    type="text"
+                    onChange={this.onUsernameChange}
+                    value={this.state.currentUsername}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label>Gender</label>
+                  <input className="form-control"
+                    type="text"
+                    onChange={this.onUserGenderChange}
+                    value={this.state.currentUserGender}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label>Date of Birth</label>
+                  <input className="form-control"
+                    type="text"
+                    onChange={this.onUserDobChange}
+                    value={this.state.currentUserDob}
+                    placeholder="YYYY-MM-DD"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label>Address</label>
+                  <input className="form-control"
+                    type="text"
+                    onChange={this.onUserAddressChange}
+                    value={this.state.currentUserAddress}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label>Email</label>
+                  <p className="error-message alertmsg">{ this.props.errors.email }</p>
+                  <input className="form-control"
+                    type="text"
+                    onChange={this.onEmailChange}
+                    value={this.state.currentEmailid}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label>Password</label>
+                  <p className="error-message alertmsg">{ this.props.errors.password }</p>
+                  <input className="form-control"
+                    type="password"
+                    onChange={this.onPasswordChange}
+                    value={this.state.currentPassword}
+                  />
+                </div>
+
+                <div className="form-group center-div">
+                  <button type="submit" className="btn btn-primary">Create New Account</button>
+                </div>
+
+                <div>Already have an account? <Link to={'/login'}>Log in</Link></div>
+              </form>
             </div>
-
-            <div className="form-group">
-              <label>Gender</label>
-              <input className="form-control"
-                type="text"
-                // errorText={this.props.errors.name}
-                onChange={this.onUserGenderChange}
-                value={this.state.currentUserGender}
-              />
-            </div>
-
-            <div className="form-group">
-              <label>Date of Birth</label>
-              <input className="form-control"
-                type="text"
-                // errorText={this.props.errors.name}
-                onChange={this.onUserDobChange}
-                value={this.state.currentUserDob}
-                placeholder="YYYY-MM-DD"
-              />
-            </div>
-
-            <div className="form-group">
-              <label>Address</label>
-              <input className="form-control"
-                type="text"
-                // errorText={this.props.errors.name}
-                onChange={this.onUserAddressChange}
-                value={this.state.currentUserAddress}
-              />
-            </div>
-
-            <div className="form-group">
-              <label>Email</label>
-              <input className="form-control"
-                type="text"
-                // errorText={this.props.errors.email}
-                onChange={this.onEmailChange}
-                value={this.state.currentEmailid}
-              />
-            </div>
-
-            <div className="form-group">
-              <label>Password</label>
-              <input className="form-control"
-                type="password"
-                onChange={this.onPasswordChange}
-                // errorText={this.props.errors.password}
-                value={this.state.currentPassword}
-              />
-            </div>
-
-            <div className="form-group">
-              {/* <RaisedButton type="submit" label="Create New Account" primary /> */}
-              <button type="submit" className="btn btn-primary">Create New Account</button>
-            </div>
-
-            {/* <CardText>Already have an account? <Link to={'/login'}>Log in</Link></CardText> */}
-              <div>Already have an account? <Link to={'/login'}>Log in</Link></div>
-          </form>
+          </div>
         </div>
       )
     }

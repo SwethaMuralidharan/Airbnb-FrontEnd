@@ -30,18 +30,12 @@ class BookingSection extends Component{
     this.setState({guestcount:count})
   }
   computeTotalCost(){
-    console.log("called");
-    console.log(this.state.from);
-    console.log(this.state.to);
     if(this.state.from!==undefined && this.state.to!==undefined){
       var _MS_PER_DAY = 1000 * 60 * 60 * 24;
       var utc1 = Date.UTC(this.state.from.getFullYear(), this.state.from.getMonth(), this.state.from.getDate());
       var utc2 = Date.UTC(this.state.to.getFullYear(), this.state.to.getMonth(), this.state.to.getDate());
       var number_of_days=Math.floor((utc2 - utc1) / _MS_PER_DAY);
       var total=number_of_days*this.props.price;
-      console.log(number_of_days);
-      console.log(total);
-      console.log(this.props.price);
       this.setState({totalcost:total})
     }
   }

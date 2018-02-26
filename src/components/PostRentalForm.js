@@ -42,86 +42,78 @@ class PostRentalForm extends Component{
         rooms:count
       })
   }
-  componentWillMount(){
-      console.log(this.props);
-  }
   PostRental(e){
     if(this.state.address===''){
       alert("Please provide the location of your listing at the least.");
     }
     else{
-      e.preventDefault();
-      var payload = ({
-        user_id:this.props.match.params.user_id,
-        address: this.state.address,
-        rooms: this.state.rooms,
-        bed: this.state.bedcount,
-        bathrooms: this.state.bathcount,
-        max_guest: this.state.guestcount,
-        price_per_night: this.state.price_per_night,
-        amenities:this.state.amenities,
-        image_urls:[this.state.image_urls]
-      });
-      console.log(payload)
-      console.log(Auth.getToken())
+          e.preventDefault();
+          var payload = ({
+            user_id:this.props.match.params.user_id,
+            address: this.state.address,
+            rooms: this.state.rooms,
+            bed: this.state.bedcount,
+            bathrooms: this.state.bathcount,
+            max_guest: this.state.guestcount,
+            price_per_night: this.state.price_per_night,
+            amenities:this.state.amenities,
+            image_urls:[this.state.image_urls]
+          });
+          var myHeaders= new Headers();
+          myHeaders.append('Content-Type', 'application/json');
+          myHeaders.append('Authorization', 'Bearer ' + Auth.getToken());
 
-      var myHeaders= new Headers();
-      myHeaders.append('Content-Type', 'application/json');
-      myHeaders.append('Authorization', 'Bearer ' + Auth.getToken());
-
-      fetch(`${process.env.REACT_APP_BACKEND_URL}/api/users/${this.props.match.params.user_id}/rentals`,{
-      method: 'POST',
-      headers: myHeaders,
-      body: JSON.stringify(payload)
-      }).then((res) => {
-        console.log(res.json);
-        return res.json()
-      }).then((json) => {
-        this.props.history.push(`/users/${Auth.getUserId()}`);
-      })
+          fetch(`${process.env.REACT_APP_BACKEND_URL}/api/users/${this.props.match.params.user_id}/rentals`,{
+          method: 'POST',
+          headers: myHeaders,
+          body: JSON.stringify(payload)
+          }).then((res) => {
+            return res.json()
+          }).then((json) => {
+            this.props.history.push(`/users/${Auth.getUserId()}`);
+          })
     }
   }
   render(){
     return (
-
             <div className="divpad center-div">
               <form onSubmit ={this.PostRental}>
-              <div><h4>Post your rental as a listing in Airbnb!</h4></div>
-              <div className="divpad">
-                <p>How many guests can your place accomodate?</p>
-                <IncrementDecrement updatecount={this.Updateguestcount}/>
-              </div>
-              <div className="divpad">
-                <p>How many rooms can the guests use?</p>
-                <IncrementDecrement updatecount={this.Updateroomcount}/>
-              </div>
-              <div className="divpad">
-                <p>How many beds can the guests use?</p>
-                <IncrementDecrement updatecount={this.Updatebedcount}/>
-              </div>
-              <div className="divpad">
-                <p>How many bathrooms can the guests use?</p>
-                <IncrementDecrement updatecount={this.Updatebathcount}/>
-              </div>
-              <div className="divpad">
-                <p>Where is this listing located?</p>
-                <input type="text" value={this.state.address} onChange={e => this.setState({ address: e.target.value})}></input>
-              </div>
-              <div className="divpad">
-                <p>What is the price per night?</p>
-                <input type="text" value={this.state.price_per_night} onChange={e => this.setState({ price_per_night: e.target.value})}></input>
-              </div>
-              <div className="divpad">
-                <p>What are the amenities provided?</p>
-                <input type="text" value={this.state.amenities}  onChange={e => this.setState({ amenities: e.target.value})}></input>
-              </div>
-              <div className="divpad">
-                <p>Upload image url's of your place separated by a comma</p>
-                <textarea value={this.state.image_urls} rows="3" cols="50" onChange={e => this.setState({ image_urls:e.target.value })}/>
-              </div>
-              <div className="divpad center-div">
-                <button className="btn btn-primary btn-round">POST</button>
-              </div>
+                <div><h4>Post your rental as a listing in Airbnb!</h4></div>
+                <div className="divpad">
+                  <p>How many guests can your place accomodate?</p>
+                  <IncrementDecrement updatecount={this.Updateguestcount}/>
+                </div>
+                <div className="divpad">
+                  <p>How many rooms can the guests use?</p>
+                  <IncrementDecrement updatecount={this.Updateroomcount}/>
+                </div>
+                <div className="divpad">
+                  <p>How many beds can the guests use?</p>
+                  <IncrementDecrement updatecount={this.Updatebedcount}/>
+                </div>
+                <div className="divpad">
+                  <p>How many bathrooms can the guests use?</p>
+                  <IncrementDecrement updatecount={this.Updatebathcount}/>
+                </div>
+                <div className="divpad">
+                  <p>Where is this listing located?</p>
+                  <input type="text" value={this.state.address} onChange={e => this.setState({ address: e.target.value})}></input>
+                </div>
+                <div className="divpad">
+                  <p>What is the price per night?</p>
+                  <input type="text" value={this.state.price_per_night} onChange={e => this.setState({ price_per_night: e.target.value})}></input>
+                </div>
+                <div className="divpad">
+                  <p>What are the amenities provided?</p>
+                  <input type="text" value={this.state.amenities}  onChange={e => this.setState({ amenities: e.target.value})}></input>
+                </div>
+                <div className="divpad">
+                  <p>Upload image url's of your place separated by a comma</p>
+                  <textarea value={this.state.image_urls} rows="3" cols="50" onChange={e => this.setState({ image_urls:e.target.value })}/>
+                </div>
+                <div className="divpad center-div">
+                  <button className="btn btn-primary btn-round">POST</button>
+                </div>
             </form>
             </div>
           )

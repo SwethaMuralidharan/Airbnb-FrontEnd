@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import Slider from 'react-rangeslider'
+import React, { Component } from 'react';
+import Slider from 'react-rangeslider';
 
 class HorizontalSlider extends Component {
   constructor (props, context) {
@@ -8,22 +8,18 @@ class HorizontalSlider extends Component {
       value: 10
     }
   }
-
   handleChangeStart = () => {
     console.log('Change event started')
   };
-
   handleChange = value => {
     this.setState({
       value: value
     })
     this.props.changeInPrice(value);
   };
-
   handleChangeComplete = () => {
     console.log('Change event completed')
   };
-
   render () {
     const { value } = this.state
     return (
@@ -43,4 +39,4 @@ class HorizontalSlider extends Component {
   }
 }
 
-export default HorizontalSlider
+export default HorizontalSlider;
