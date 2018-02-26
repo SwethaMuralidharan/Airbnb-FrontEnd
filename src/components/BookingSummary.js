@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 import Auth from '../modules/Auth';
-// import {Link} from 'react-router-dom';
 import '../App.css';
 import './Profile.js';
 import BookingSection from './BookingSection.js';
-import $ from 'jquery';
-// import PostRentalForm from './PostRentalForm.js';
-// import DatePicker from './DatePicker.js';
-// import IncrementDecrement from './IncrementDecrement.js';
+
 
 class BookingSummary extends Component{
   constructor(){
@@ -24,7 +20,7 @@ class BookingSummary extends Component{
       edited_booking_id:null
     }
     this.deleteBooking=this.deleteBooking.bind(this);
-    this.editBooking=this.editBooking.bind(this);
+    this.updateBooking=this.updateBooking.bind(this);
     this.showEditSection=this.showEditSection.bind(this);
   }
   showEditSection(booking_id){
@@ -35,7 +31,7 @@ class BookingSummary extends Component{
     document.getElementById(booking_id).classList.add("showEditdiv");
     console.log(document.getElementById(booking_id));
   }
-  editBooking(fromvalue,tovalue,guestcountvalue,totalcostvalue){
+  updateBooking(fromvalue,tovalue,guestcountvalue,totalcostvalue){
     this.setState({
       from:fromvalue,
       to:tovalue,
@@ -75,7 +71,7 @@ class BookingSummary extends Component{
       }
     }).then((response) => {
       this.setState({
-        BookingInfo: this.state.BookingInfo.bookings.filter(booking => booking._id !== booking_id)
+        BookingInfo: {bookings: this.state.BookingInfo.bookings.filter(booking => booking._id !== booking_id)}
       });
     });
     // this.props.history.push(`/users/${Auth.getUserId()}/bookings`);
@@ -108,15 +104,15 @@ class BookingSummary extends Component{
                                         Rental Location: {each_booking.rental_id && each_booking.rental_id.address}
                                       </div>
                                       <div className="col-sm-3 outlineborder">
-                                        Booking Date : {each_booking.booking_date}
+                                        Booking Date : {each_booking.booking_date.substring(0,10)}
                                       </div>
                                 </div>
                                 <div className="row">
                                       <div className="col-sm-3 outlineborder">
-                                        Date of arrival : {each_booking.start_date}
+                                        Date of arrival : {each_booking.start_date.substring(0,10)}
                                       </div>
                                       <div className="col-sm-3 outlineborder">
-                                        Date of leaving : {each_booking.end_date}
+                                        Date of leaving : {each_booking.end_date.substring(0,10)}
                                       </div>
                                       <div className="col-sm-3 outlineborder">
                                         Total Guests : {each_booking.total_guests}
@@ -137,7 +133,7 @@ class BookingSummary extends Component{
                                 </div>
                                 <div className="row hideEditdiv" id={each_booking._id}>
                                       <div className="col-sm-12">
-                                          <BookingSection booking_id={each_booking._id} price={each_booking.rental_id.price_per_night} editBooking={this.editBooking}/>
+                                          <BookingSection booking_id={each_booking._id} price={each_booking.rental_id && each_booking.rental_id.price_per_night} editBooking={this.updateBooking}/>
                                       </div>
                                 </div>
                             </div>

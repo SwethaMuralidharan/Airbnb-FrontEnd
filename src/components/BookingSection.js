@@ -49,7 +49,6 @@ class BookingSection extends Component{
     e.preventDefault();
     console.log(this.state.from,this.state.to,this.state.guestcount,this.state.totalcost);
     this.props.editBooking(
-                           // this.props.booking_id,
                            this.state.from,
                            this.state.to,
                            this.state.guestcount,
@@ -58,13 +57,13 @@ class BookingSection extends Component{
   }
   render(){
     return (
-            <div className="divpad col-md-8 outlineborder">
+            <div className="divpad">
                 <form onSubmit={this.SaveBooking}>
                     <DatePicker changeFromDate={this.handleFromChange} changeToDate={this.handleToChange}/>
                     <label>Guests:</label>
                     <IncrementDecrement updatecount={this.Updateguestcount}/>
-                    <label>Total Cost : </label><label>{this.state.totalcost}</label>
-                    <div><button className="btn btn-primary">Save Booking</button></div>
+                    <div className="divpad">Total Cost :<label>{this.state.totalcost}</label></div>
+                    <div className="divpad"><button className="btn btn-primary" >Save Booking</button></div>
                 </form>
             </div>
            )

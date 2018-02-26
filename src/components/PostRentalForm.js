@@ -84,9 +84,9 @@ class PostRentalForm extends Component{
   render(){
     return (
 
-            <div className="divpad">
+            <div className="divpad center-div">
               <form onSubmit ={this.PostRental}>
-              <h4>Post your rental as a listing in Airbnb!</h4>
+              <div><h4>Post your rental as a listing in Airbnb!</h4></div>
               <div className="divpad">
                 <p>How many guests can your place accomodate?</p>
                 <IncrementDecrement updatecount={this.Updateguestcount}/>
@@ -119,7 +119,7 @@ class PostRentalForm extends Component{
                 <p>Upload image url's of your place separated by a comma</p>
                 <textarea value={this.state.image_urls} rows="3" cols="50" onChange={e => this.setState({ image_urls: e.target.value})}/>
               </div>
-              <div className="divpad">
+              <div className="divpad center-div">
                 <button className="btn btn-primary btn-round">POST</button>
               </div>
             </form>

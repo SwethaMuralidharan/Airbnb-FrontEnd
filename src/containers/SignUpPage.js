@@ -28,14 +28,16 @@ class SignUpPage extends Component {
    *
    * @param {object} event - the JavaScript event object
    */
-  processForm(inputName, inputEmail, inputPassword) {
-
+  processForm(inputName, inputEmail, inputPassword,inputDob,inputGender,inputAddress) {
+debugger;
     // create a string for an HTTP body message
     const name = encodeURIComponent(inputName);
     const email = encodeURIComponent(inputEmail);
     const password = encodeURIComponent(inputPassword);
-
-    const formData = `name=${name}&email=${email}&password=${password}`;
+    const Dob=encodeURIComponent(inputDob);
+    const Gender=encodeURIComponent(inputGender);
+    const Address=encodeURIComponent(inputAddress);
+    const formData = `name=${name}&email=${email}&password=${password}&dob=${Dob}&gender=${Gender}&address=${Address}`;
 
     // create an AJAX request
     const xhr = new XMLHttpRequest();

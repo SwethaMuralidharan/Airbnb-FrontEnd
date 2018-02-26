@@ -10,16 +10,37 @@ class SignUpForm extends Component{
     this.state={
         currentUsername:'',
         currentEmailid:'',
-        currentPassword:''
+        currentPassword:'',
+        currentUserAddress:'',
+        currentUserGender:'',
+        currentUserDob:''
     }
     this.onUsernameChange=this.onUsernameChange.bind(this);
     this.onEmailChange=this.onEmailChange.bind(this);
     this.onPasswordChange=this.onPasswordChange.bind(this);
     this.sendUserInfo=this.sendUserInfo.bind(this);
+    this.onUserAddressChange=this.onUserAddressChange.bind(this);
+    this.onUserGenderChange=this.onUserGenderChange.bind(this);
+    this.onUserDobChange=this.onUserDobChange.bind(this);
   }
   onUsernameChange(e){
     this.setState({
       currentUsername:e.target.value
+    })
+  }
+  onUserAddressChange(e){
+    this.setState({
+      currentUserAddress:e.target.value
+    })
+  }
+  onUserGenderChange(e){
+    this.setState({
+      currentUserGender:e.target.value
+    })
+  }
+  onUserDobChange(e){
+    this.setState({
+      currentUserDob:e.target.value
     })
   }
   onEmailChange(e){
@@ -34,11 +55,11 @@ class SignUpForm extends Component{
   }
   sendUserInfo(e){
     e.preventDefault();
-    this.props.onFormSubmit(this.state.currentUsername, this.state.currentEmailid, this.state.currentPassword);
+    this.props.onFormSubmit(this.state.currentUsername, this.state.currentEmailid, this.state.currentPassword,this.state.currentUserDob,this.state.currentUserGender,this.state.currentUserAddress);
   }
     render(){
       return (
-        <div className="container">
+        <div className="container divpad">
           <form action="/" onSubmit={ this.sendUserInfo }>
             <h2 className="card-heading">Sign Up</h2>
 
@@ -51,6 +72,37 @@ class SignUpForm extends Component{
                 // errorText={this.props.errors.name}
                 onChange={this.onUsernameChange}
                 value={this.state.currentUsername}
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Gender</label>
+              <input className="form-control"
+                type="text"
+                // errorText={this.props.errors.name}
+                onChange={this.onUserGenderChange}
+                value={this.state.currentUserGender}
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Date of Birth</label>
+              <input className="form-control"
+                type="text"
+                // errorText={this.props.errors.name}
+                onChange={this.onUserDobChange}
+                value={this.state.currentUserDob}
+                placeholder="YYYY-MM-DD"
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Address</label>
+              <input className="form-control"
+                type="text"
+                // errorText={this.props.errors.name}
+                onChange={this.onUserAddressChange}
+                value={this.state.currentUserAddress}
               />
             </div>
 

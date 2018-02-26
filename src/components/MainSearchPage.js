@@ -14,7 +14,7 @@ class MainSearchPage extends Component {
     return(
       <div className="container divpad">
           <div className="row">
-                <div className="col-md-6">
+                <div className="col-md-6 offset-md-3">
                 <h2>Book Unique Homes and Enjoy</h2>
                     <div id="custom-search-input">
                         <div className="input-group col-md-12">

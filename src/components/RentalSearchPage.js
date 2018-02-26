@@ -42,7 +42,10 @@ class RentalSearchPage extends Component{
   }
   getSearchResults(){
     console.log(Auth.getToken());
-    if(this.state.guestcount!==0 && this.state.price!==undefined){
+    if(Auth.getToken()===null){
+        alert("Please login to proceed");
+    }
+    else if(this.state.guestcount!==0 && this.state.price!==undefined){
       fetch(`http://localhost:8080/api/rentals/${this.props.match.params.searchTerm}?max_guests=${this.state.guestcount}&price_per_night=${this.state.price}`,{
               headers: {
                 Accept: 'application/json',
@@ -69,34 +72,30 @@ class RentalSearchPage extends Component{
     console.log("to date:",this.state.to);
     console.log("price",this.state.price);
     console.log("guestcount",this.state.guestcount);
-    return (<div>
+    return (<div className="divpad">
 
               <div className="headerstyle">Search results for {this.props.match.params.searchTerm}</div>
               <div className="container">
-                <div className="row divpad">
+                {/* <div className="row divpad">
                   <div className="col-md-8 outlineborder">
                     <DatePicker changeFromDate={this.handleFromChange} changeToDate={this.handleToChange}/>
                   </div>
-                </div>
-                <div className="row divpad">
-                  <div className="col-md-8 outlineborder">
+                </div> */}
+                <div className="row outlineborder">
+                  <div className="col-md-6">
                     <HorizontalSlider changeInPrice={this.handleChangeInPrice}/>
                   </div>
-                </div>
-                <div className="row divpad">
-                  <div className="col-md-8 outlineborder">
+                  <div className="col-md-5">
                     <label>Choose Number Of guests</label>
                     <IncrementDecrement updatecount={this.Updateguestcount}/>
                   </div>
-                </div>
-                <div className="row divpad">
-                  <div className="col-md-8">
+                  <div className="col-md-1 divpad">
                     <button className="btn btn-primary" onClick={this.getSearchResults}>Search</button>
                   </div>
                 </div>
               </div>
               {(this.state.RentalInfo).map(each_rental=>{
-                      return <div className="center-div divpad" key={each_rental}><Link to={`/users/${each_rental.user_id}/rentals/${each_rental._id}`}><img src={each_rental.image_urls} height="100" alt="rental_image"  width="150"/>  {each_rental.address} - ${each_rental.price_per_night}</Link></div>
+                      return <div className="center-div divpad" key={each_rental}><Link to={`/users/${each_rental.user_id}/rentals/${each_rental._id}`}><img src={each_rental.image_urls} height="150" alt="rental_image"  width="200"/>  {each_rental.address} - ${each_rental.price_per_night}</Link></div>
               })}
           </div>)
   }

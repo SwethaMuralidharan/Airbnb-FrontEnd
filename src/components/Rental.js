@@ -103,7 +103,7 @@ class Rental extends Component{
         <div className="container">
         <div className="row">
         <div id="carouselExampleControls" className="carousel slide col-md-6 offset-md-3" data-ride="carousel" >
-          <div className="carousel-inner">
+          <div className="carousel-inner divpad">
              {this.state.RentalInfo && this.state.RentalInfo.image_urls && this.state.RentalInfo.image_urls.map((each_img,index)=>{
               return <div key={index} className={(index===0 ? 'carousel-item active' : 'carousel-item')}>
                         <img src={each_img} alt="rental_image" className="setimgwidth"/>
@@ -122,22 +122,22 @@ class Rental extends Component{
           </div>
           <div className="row divpad">
               <div className="divpad col-md-4 outlineborder">
-                  <ul>
-                      <li>Address : {this.state.RentalInfo && this.state.RentalInfo.address}</li>
-                      <li>Number of Rooms : {this.state.RentalInfo && this.state.RentalInfo.rooms}</li>
-                      <li>Number of Bathrooms : {this.state.RentalInfo && this.state.RentalInfo.bathrooms}</li>
-                      <li>Maximum guests : {this.state.RentalInfo && this.state.RentalInfo.max_guest}</li>
-                      <li>Amenities : {this.state.RentalInfo && this.state.RentalInfo.amenities}</li>
-                      <li>Price per night : ${this.state.RentalInfo && this.state.RentalInfo.price_per_night}</li>
-                  </ul>
+                  <h4 className="center-div">Rental Info</h4>
+                      <p>Address : {this.state.RentalInfo && this.state.RentalInfo.address}</p>
+                      <p>Number of Rooms : {this.state.RentalInfo && this.state.RentalInfo.rooms}</p>
+                      <p>Number of Bathrooms : {this.state.RentalInfo && this.state.RentalInfo.bathrooms}</p>
+                      <p>Maximum guests : {this.state.RentalInfo && this.state.RentalInfo.max_guest}</p>
+                      <p>Amenities : {this.state.RentalInfo && this.state.RentalInfo.amenities}</p>
+                      <p>Price per night : ${this.state.RentalInfo && this.state.RentalInfo.price_per_night}</p>
               </div>
               <div className="divpad col-md-8 outlineborder">
+                  <h4 className="center-div">Booking Section</h4>
                   <form onSubmit={this.bookrental}>
                       <DatePicker changeFromDate={this.handleFromChange} changeToDate={this.handleToChange}/>
                       <label>Guests:</label>
                       <IncrementDecrement updatecount={this.Updateguestcount}/>
-                      <label>Total Cost : </label><label>{this.state.totalcost}</label>
-                      <div><button className="btn btn-primary">Save Booking</button></div>
+                      <div className="divpad">Total Cost :<label>{this.state.totalcost}</label></div>
+                      <div className="divpad"><button className="btn btn-primary" >Save Booking</button></div>
                   </form>
               </div>
           </div>

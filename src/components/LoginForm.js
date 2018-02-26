@@ -32,7 +32,7 @@ class LoginForm extends Component{
   }
     render(){
       return (
-        <div className="container">
+        <div className="container divpad">
           <form action="/" onSubmit={this.sendLoggedInInfo}>
             <h2 className="card-heading">Login</h2>
 

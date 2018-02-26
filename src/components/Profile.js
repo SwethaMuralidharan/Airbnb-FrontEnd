@@ -30,11 +30,11 @@ class Profile extends Component{
   render(){
     console.log(this.props);
     return (
-      <div className="col-md-6 divpad setbg">
+      <div className="col-md-6 offset-md-3 divpad setbg">
         <div className="headerstyle"><h4>User Name : {this.state.UserInfo.name}</h4></div>
         <ul>
           <li>Gender : {this.state.UserInfo.gender}</li>
-          <li>Dob : {this.state.UserInfo.dob}</li>
+          <li>Dob : {String(this.state.UserInfo.dob).substring(0,10)}</li>
           <li>Address : {this.state.UserInfo.address}</li>
           <li>Email : {this.state.UserInfo.email}</li>
         </ul>

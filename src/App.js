@@ -56,7 +56,7 @@ class App extends Component {
           <Route exact path='/' component={ MainSearchPage }/>
           <Route path='/signup' component={ SignUpPage }/>
           <Route path='/login' render={ MyLoginPage } />
-          <Route path='/dashboard' component={ DashboardPage }/>
+          {/* <Route path='/dashboard' component={ DashboardPage }/> */}
           <Route path='/home' component={ HomePage}/>
 
           <Route path='/users/:user_id/bookings' component={ BookingSummary }/>
