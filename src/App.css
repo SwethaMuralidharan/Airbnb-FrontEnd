@@ -90,5 +90,15 @@ display: none;
 display:block;
 }
 .setbodybg{
-background-color:#edeae8
+background-color:#edeae8;
+}
+.alertmsg{
+color: red;
+}
+.eachmapdiv{
+padding-top: 20px;
+margin-top: 20px;
+}
+.top-pad{
+padding-top:10px;
 }

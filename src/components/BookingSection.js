@@ -62,7 +62,7 @@ class BookingSection extends Component{
                     <DatePicker changeFromDate={this.handleFromChange} changeToDate={this.handleToChange}/>
                     <label>Guests:</label>
                     <IncrementDecrement updatecount={this.Updateguestcount}/>
-                    <div className="divpad">Total Cost :<label>{this.state.totalcost}</label></div>
+                    <label className="top-pad">Total Cost : {this.state.totalcost}</label>
                     <div className="divpad"><button className="btn btn-primary" >Save Booking</button></div>
                 </form>
             </div>

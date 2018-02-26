@@ -117,7 +117,7 @@ class PostRentalForm extends Component{
               </div>
               <div className="divpad">
                 <p>Upload image url's of your place separated by a comma</p>
-                <textarea value={this.state.image_urls} rows="3" cols="50" onChange={e => this.setState({ image_urls: e.target.value})}/>
+                <textarea value={this.state.image_urls} rows="3" cols="50" onChange={e => this.setState({ image_urls:e.target.value })}/>
               </div>
               <div className="divpad center-div">
                 <button className="btn btn-primary btn-round">POST</button>

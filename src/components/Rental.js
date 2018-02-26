@@ -22,6 +22,7 @@ class Rental extends Component{
     this.handleToChange = this.handleToChange.bind(this);
     this.computeTotalCost=this.computeTotalCost.bind(this);
     this.bookrental=this.bookrental.bind(this);
+    this.deleteRental=this.deleteRental.bind(this);
   }
   componentWillMount(){
     console.log(this.props);
@@ -47,6 +48,22 @@ class Rental extends Component{
       var total=number_of_days*this.state.RentalInfo.price_per_night
       this.setState({totalcost:total})
     }
+  }
+  deleteRental(rental_id){
+    fetch(`http://localhost:8080/api/users/${this.props.match.params.user_id}/rentals/${this.props.match.params.rental_id}`,{
+      method: 'delete',
+      headers: {
+        Accept: 'application/json',
+        Origin: '',
+        authorization: 'Bearer ' + Auth.getToken(),
+      }
+    }).then((response) => {
+      console.log(response);
+      this.props.history.push(`/users/${Auth.getUserId()}`);
+      // this.setState({
+      //   BookingInfo: {bookings: this.state.BookingInfo.bookings.filter(booking => booking._id !== booking_id)}
+      // });
+    });
   }
   bookrental(e){
     e.preventDefault();
@@ -121,7 +138,7 @@ class Rental extends Component{
           </div>
           </div>
           <div className="row divpad">
-              <div className="divpad col-md-4 outlineborder">
+              <div className="divpad col-md-4 outlineborder headerstyle">
                   <h4 className="center-div">Rental Info</h4>
                       <p>Address : {this.state.RentalInfo && this.state.RentalInfo.address}</p>
                       <p>Number of Rooms : {this.state.RentalInfo && this.state.RentalInfo.rooms}</p>
@@ -129,14 +146,20 @@ class Rental extends Component{
                       <p>Maximum guests : {this.state.RentalInfo && this.state.RentalInfo.max_guest}</p>
                       <p>Amenities : {this.state.RentalInfo && this.state.RentalInfo.amenities}</p>
                       <p>Price per night : ${this.state.RentalInfo && this.state.RentalInfo.price_per_night}</p>
+                      {(this.props.match.params.user_id===Auth.getUserId())?
+                        (<div className="divpad">
+                            <button className="btn btn-primary">Edit</button>
+                            <button className="btn btn-primary" onClick={()=>this.deleteRental(this.props.match.params.rental_id)}>Delete</button>
+                        </div>)
+                      :null}
               </div>
-              <div className="divpad col-md-8 outlineborder">
+              <div className="divpad col-md-8 outlineborder headerstyle">
                   <h4 className="center-div">Booking Section</h4>
                   <form onSubmit={this.bookrental}>
                       <DatePicker changeFromDate={this.handleFromChange} changeToDate={this.handleToChange}/>
                       <label>Guests:</label>
                       <IncrementDecrement updatecount={this.Updateguestcount}/>
-                      <div className="divpad">Total Cost :<label>{this.state.totalcost}</label></div>
+                      <label className="top-pad">Total Cost : {this.state.totalcost}</label>
                       <div className="divpad"><button className="btn btn-primary" >Save Booking</button></div>
                   </form>
               </div>
