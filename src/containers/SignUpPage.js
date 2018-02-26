@@ -42,7 +42,7 @@ debugger;
     // create an AJAX request
     const xhr = new XMLHttpRequest();
 
-    xhr.open('post', 'http://localhost:8080/auth/signup');
+    xhr.open('post', `${process.env.REACT_APP_BACKEND_URL}/auth/signup`);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.responseType = 'json';
 

@@ -39,7 +39,7 @@ class BookingSummary extends Component{
       totalcost:totalcostvalue,
       // editClicked:false
     },()=>
-    fetch(`http://localhost:8080/api/users/${Auth.getUserId()}/bookings/${this.state.edited_booking_id}`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/users/${Auth.getUserId()}/bookings/${this.state.edited_booking_id}`, {
         method: 'PUT',
         headers: {
           'Accept': 'application/json',
@@ -61,7 +61,7 @@ class BookingSummary extends Component{
           }))
   }
   deleteBooking(booking_id){
-    fetch(`http://localhost:8080/api/users/${Auth.getUserId()}/bookings/${booking_id}`,
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/users/${Auth.getUserId()}/bookings/${booking_id}`,
     {
       method: 'delete',
       headers: {
@@ -77,7 +77,7 @@ class BookingSummary extends Component{
     // this.props.history.push(`/users/${Auth.getUserId()}/bookings`);
   }
   componentDidMount(){
-    fetch(`http://localhost:8080/api/users/${Auth.getUserId()}/bookings`,{
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/users/${Auth.getUserId()}/bookings`,{
             headers: {
               Accept: 'application/json',
               Origin: '',

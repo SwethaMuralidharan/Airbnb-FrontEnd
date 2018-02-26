@@ -46,7 +46,7 @@ class LoginPage extends Component {
 
     // create an AJAX request
     const xhr = new XMLHttpRequest();
-    xhr.open('post', 'http://localhost:8080/auth/login');
+    xhr.open('post', `${process.env.REACT_APP_BACKEND_URL}/auth/login`);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.responseType = 'json';
     xhr.addEventListener('load', () => {

@@ -69,7 +69,7 @@ class PostRentalForm extends Component{
       myHeaders.append('Content-Type', 'application/json');
       myHeaders.append('Authorization', 'Bearer ' + Auth.getToken());
 
-      fetch(`http://localhost:8080/api/users/${this.props.match.params.user_id}/rentals`,{
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/api/users/${this.props.match.params.user_id}/rentals`,{
       method: 'POST',
       headers: myHeaders,
       body: JSON.stringify(payload)

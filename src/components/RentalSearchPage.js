@@ -46,7 +46,7 @@ class RentalSearchPage extends Component{
         alert("Please login to proceed");
     }
     else if(this.state.guestcount!==0 && this.state.price!==undefined){
-      fetch(`http://localhost:8080/api/rentals/${this.props.match.params.searchTerm}?max_guests=${this.state.guestcount}&price_per_night=${this.state.price}`,{
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/api/rentals/${this.props.match.params.searchTerm}?max_guests=${this.state.guestcount}&price_per_night=${this.state.price}`,{
               headers: {
                 Accept: 'application/json',
                 Origin: '',

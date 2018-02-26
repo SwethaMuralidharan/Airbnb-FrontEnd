@@ -50,7 +50,7 @@ class Rental extends Component{
     }
   }
   deleteRental(rental_id){
-    fetch(`http://localhost:8080/api/users/${this.props.match.params.user_id}/rentals/${this.props.match.params.rental_id}`,{
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/users/${this.props.match.params.user_id}/rentals/${this.props.match.params.rental_id}`,{
       method: 'delete',
       headers: {
         Accept: 'application/json',
@@ -93,7 +93,7 @@ class Rental extends Component{
       myHeaders.append('Content-Type', 'application/json');
       myHeaders.append('Authorization', 'Bearer ' + Auth.getToken());
 
-      fetch(`http://localhost:8080/api/users/${Auth.getUserId()}/rentals/${this.props.match.params.rental_id}/booking`,{
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/api/users/${Auth.getUserId()}/rentals/${this.props.match.params.rental_id}/booking`,{
         method: 'POST',
         headers: myHeaders,
         body: JSON.stringify(payload)
@@ -107,7 +107,7 @@ class Rental extends Component{
   }
 
   componentDidMount(){
-    fetch(`http://localhost:8080/api/users/${this.props.match.params.user_id}/rentals/${this.props.match.params.rental_id}`,{
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/users/${this.props.match.params.user_id}/rentals/${this.props.match.params.rental_id}`,{
             headers: {
               Accept: 'application/json',
               Origin: '',

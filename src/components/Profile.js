@@ -11,7 +11,7 @@ class Profile extends Component{
     }
   }
   componentDidMount() {
-      fetch(`http://localhost:8080/api/users/${this.props.match.params.user_id}`,{
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/api/users/${this.props.match.params.user_id}`,{
               headers: {
                 Accept: 'application/json',
                 Origin: '',
