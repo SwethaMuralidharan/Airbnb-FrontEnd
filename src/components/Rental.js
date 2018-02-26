@@ -60,44 +60,52 @@ class Rental extends Component{
     }).then((response) => {
       console.log(response);
       this.props.history.push(`/users/${Auth.getUserId()}`);
-      // this.setState({
-      //   BookingInfo: {bookings: this.state.BookingInfo.bookings.filter(booking => booking._id !== booking_id)}
-      // });
     });
   }
   bookrental(e){
-    e.preventDefault();
-    var today = new Date(),
-    date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-    var start_Date=this.state.from.getFullYear() + '-' + (this.state.from.getMonth()+1) + '-' + this.state.from.getDate();
-    var end_Date=this.state.to.getFullYear() + '-' + (this.state.to.getMonth()+1) + '-' + this.state.to.getDate();
-    var payload = ({
-      user_id:Auth.getUserId(),//logged in user who made the booking
-      rental_id:this.props.match.params.rental_id,
-      booking_date:date,
-      start_date:start_Date,
-      end_date:end_Date,
-      total_cost:this.state.totalcost,
-      total_guests:this.state.guestcount
-    });
-    console.log(payload)
-    console.log(Auth.getToken())
+    var today = new Date();
+    if(this.state.from===undefined || this.state.to===undefined || this.state.guestcount===0){
+      alert("Please choose dates and guests count for booking");
+    }
+    else if(today>this.state.from || today>this.state.to){
+      alert("Please choose dates in future.");
+    }
+    else{
+      e.preventDefault();
 
-    var myHeaders= new Headers();
-    myHeaders.append('Accept','application/json');
-    myHeaders.append('Content-Type', 'application/json');
-    myHeaders.append('Authorization', 'Bearer ' + Auth.getToken());
+      var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+      var start_Date=this.state.from.getFullYear() + '-' + (this.state.from.getMonth()+1) + '-' + this.state.from.getDate();
+      var end_Date=this.state.to.getFullYear() + '-' + (this.state.to.getMonth()+1) + '-' + this.state.to.getDate();
+      var payload = ({
+        user_id:Auth.getUserId(),//logged in user who made the booking
+        rental_id:this.props.match.params.rental_id,
+        booking_date:date,
+        start_date:start_Date,
+        end_date:end_Date,
+        total_cost:this.state.totalcost,
+        total_guests:this.state.guestcount
+      });
+      console.log(payload)
+      console.log(Auth.getToken())
 
-    fetch(`http://localhost:8080/api/users/${Auth.getUserId()}/rentals/${this.props.match.params.rental_id}/booking`,{
-      method: 'POST',
-      headers: myHeaders,
-      body: JSON.stringify(payload)
-    }).then((res) => {
-      return res.json()
-    }).then((json) => {
-      this.props.history.push(`/users/${Auth.getUserId()}/bookings`);
-    })
+      var myHeaders= new Headers();
+      myHeaders.append('Accept','application/json');
+      myHeaders.append('Content-Type', 'application/json');
+      myHeaders.append('Authorization', 'Bearer ' + Auth.getToken());
+
+      fetch(`http://localhost:8080/api/users/${Auth.getUserId()}/rentals/${this.props.match.params.rental_id}/booking`,{
+        method: 'POST',
+        headers: myHeaders,
+        body: JSON.stringify(payload)
+      }).then((res) => {
+        return res.json()
+      }).then((json) => {
+        this.props.history.push(`/users/${Auth.getUserId()}/bookings`);
+      })
+    }
+
   }
+
   componentDidMount(){
     fetch(`http://localhost:8080/api/users/${this.props.match.params.user_id}/rentals/${this.props.match.params.rental_id}`,{
             headers: {
@@ -147,9 +155,8 @@ class Rental extends Component{
                       <p>Amenities : {this.state.RentalInfo && this.state.RentalInfo.amenities}</p>
                       <p>Price per night : ${this.state.RentalInfo && this.state.RentalInfo.price_per_night}</p>
                       {(this.props.match.params.user_id===Auth.getUserId())?
-                        (<div className="divpad">
-                            <button className="btn btn-primary">Edit</button>
-                            <button className="btn btn-primary" onClick={()=>this.deleteRental(this.props.match.params.rental_id)}>Delete</button>
+                        (<div className="center-div">
+                            <button className="btn btn-primary" onClick={()=>{if(window.confirm('Are you sure you want to delete this listing?')) {this.deleteRental(this.props.match.params.rental_id)};}}>Delete</button>
                         </div>)
                       :null}
               </div>
@@ -157,7 +164,7 @@ class Rental extends Component{
                   <h4 className="center-div">Booking Section</h4>
                   <form onSubmit={this.bookrental}>
                       <DatePicker changeFromDate={this.handleFromChange} changeToDate={this.handleToChange}/>
-                      <label>Guests:</label>
+                      <label> Choose Number of Guests:</label>
                       <IncrementDecrement updatecount={this.Updateguestcount}/>
                       <label className="top-pad">Total Cost : {this.state.totalcost}</label>
                       <div className="divpad"><button className="btn btn-primary" >Save Booking</button></div>

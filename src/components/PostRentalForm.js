@@ -46,40 +46,40 @@ class PostRentalForm extends Component{
       console.log(this.props);
   }
   PostRental(e){
-    e.preventDefault();
-    var payload = ({
-      user_id:this.props.match.params.user_id,
-      address: this.state.address,
-      rooms: this.state.rooms,
-      bed: this.state.bedcount,
-      bathrooms: this.state.bathcount,
-      max_guest: this.state.guestcount,
-      price_per_night: this.state.price_per_night,
-      amenities:this.state.amenities,
-      image_urls:[this.state.image_urls]
-    });
-    console.log(payload)
-    console.log(Auth.getToken())
+    if(this.state.address===''){
+      alert("Please provide the location of your listing at the least.");
+    }
+    else{
+      e.preventDefault();
+      var payload = ({
+        user_id:this.props.match.params.user_id,
+        address: this.state.address,
+        rooms: this.state.rooms,
+        bed: this.state.bedcount,
+        bathrooms: this.state.bathcount,
+        max_guest: this.state.guestcount,
+        price_per_night: this.state.price_per_night,
+        amenities:this.state.amenities,
+        image_urls:[this.state.image_urls]
+      });
+      console.log(payload)
+      console.log(Auth.getToken())
 
-    var myHeaders= new Headers();
-    myHeaders.append('Content-Type', 'application/json');
-    myHeaders.append('Authorization', 'Bearer ' + Auth.getToken());
+      var myHeaders= new Headers();
+      myHeaders.append('Content-Type', 'application/json');
+      myHeaders.append('Authorization', 'Bearer ' + Auth.getToken());
 
-    fetch(`http://localhost:8080/api/users/${this.props.match.params.user_id}/rentals`,{
-    method: 'POST',
-    headers: myHeaders,
-// {
-//       'Accept': 'application/json',
-//       'Content-Type': 'application/json',
-//       'Authorization': 'Bearer ' + Auth.getToken()
-    // },
-    body: JSON.stringify(payload)
-    }).then((res) => {
-      console.log(res.json);
-      return res.json()
-    }).then((json) => {
-      this.props.history.push(`/users/${Auth.getUserId()}`);
-    })
+      fetch(`http://localhost:8080/api/users/${this.props.match.params.user_id}/rentals`,{
+      method: 'POST',
+      headers: myHeaders,
+      body: JSON.stringify(payload)
+      }).then((res) => {
+        console.log(res.json);
+        return res.json()
+      }).then((json) => {
+        this.props.history.push(`/users/${Auth.getUserId()}`);
+      })
+    }
   }
   render(){
     return (

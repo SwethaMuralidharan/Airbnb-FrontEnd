@@ -132,7 +132,7 @@ class BookingSummary extends Component{
                                           <button className="btn btn-info btn-round" onClick={()=>this.showEditSection(each_booking._id)}>Edit</button>
                                         </div>
                                         <div className="col-sm-3 divpad">
-                                          <button className="btn btn-info btn-round" onClick={()=>this.deleteBooking(each_booking._id)}>Delete</button>
+                                          <button className="btn btn-info btn-round" onClick={()=>{if(window.confirm('Are you sure you want to delete this booking?')) {this.deleteBooking(each_booking._id)};}}>Cancel</button>
                                         </div>
                                   </div>
                                   <div className="row hideEditdiv" id={each_booking._id}>

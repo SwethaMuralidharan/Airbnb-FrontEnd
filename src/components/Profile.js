@@ -32,12 +32,10 @@ class Profile extends Component{
     return (
       <div className="col-md-6 offset-md-3 divpad setbg">
         <div className="headerstyle"><h4>User Name : {this.state.UserInfo.name}</h4></div>
-        <ul>
-          <li>Gender : {this.state.UserInfo.gender}</li>
-          <li>Dob : {String(this.state.UserInfo.dob).substring(0,10)}</li>
-          <li>Address : {this.state.UserInfo.address}</li>
-          <li>Email : {this.state.UserInfo.email}</li>
-        </ul>
+          <h5 className="left-pad">Gender : {this.state.UserInfo.gender}</h5>
+          <h5 className="left-pad">Dob : {String(this.state.UserInfo.dob).substring(0,10)}</h5>
+          <h5 className="left-pad">Address : {this.state.UserInfo.address}</h5>
+          <h5 className="left-pad">Email : {this.state.UserInfo.email}</h5>
         <div>
           <div className="headerstyle"><h4>Places you Own</h4></div>
           <div className="center-div">
