@@ -83,7 +83,7 @@ class RentalSearchPage extends Component{
                   <h4 className="center-div alertmsg">Sorry! No results found!</h4>
               </div>
               {(this.state.RentalInfo).map(each_rental=>{
-                      return <div className="center-div divpad" key={each_rental._id}><Link to={`/users/${each_rental.user_id}/rentals/${each_rental._id}`}><img src={each_rental.image_urls} height="150" alt="rental_image"  width="200"/>  {each_rental.address} - ${each_rental.price_per_night}</Link></div>
+                      return <div className="divpad col-md-4 offset-md-4" key={each_rental._id}><Link to={`/users/${each_rental.user_id}/rentals/${each_rental._id}`}><img src={each_rental.image_urls} height="150" alt="rental_image"  width="200"/>  {each_rental.address} - ${each_rental.price_per_night}</Link></div>
               })}
           </div>)
   }
