@@ -15,10 +15,6 @@ class LoginPage extends Component {
     this.state = {
       errors: {},
       successMessage,
-      // user: {
-      //   email: '',
-      //   password: ''
-      // }
     };
     this.processForm = this.processForm.bind(this);
     // this.changeUser = this.changeUser.bind(this);
@@ -53,22 +49,12 @@ class LoginPage extends Component {
     });
     xhr.send(formData);
   }
-  // changeUser(event) {
-  //   const field = event.target.name;
-  //   const user = this.state.user;
-  //   user[field] = event.target.value;
-  //   this.setState({
-  //     user
-  //   });
-  // }
   render() {
     return (
       <LoginForm
         onFormSubmit={this.processForm}
         errors={this.state.errors}
         successMessage={this.state.successMessage}
-        // onChange={this.changeUser}
-        // user={this.state.user}
       />
     );
   }

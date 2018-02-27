@@ -8,7 +8,6 @@ class SignUpPage extends Component {
       errors: {},
     };
     this.processForm = this.processForm.bind(this);
-    // this.changeUser = this.changeUser.bind(this);
   }
   processForm(inputName, inputEmail, inputPassword,inputDob,inputGender,inputAddress) {
     // create a string for an HTTP body message
@@ -46,22 +45,11 @@ class SignUpPage extends Component {
     });
     xhr.send(formData);
   }
-  // changeUser(event) {
-  //   const field = event.target.name;
-  //   const user = this.state.user;
-  //   user[field] = event.target.value;
-  //
-  //   this.setState({
-  //     user
-  //   });
-  // }
   render() {
     return (
       <SignUpForm
         onFormSubmit={this.processForm}
         errors={this.state.errors}
-        // onChange={this.changeUser}
-        // user={this.state.user}
       />
     );
   }
