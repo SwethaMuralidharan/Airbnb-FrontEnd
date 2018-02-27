@@ -17,13 +17,15 @@ The Back-End was built using Express, Mongoose and MongoDB.
 
 #### Installation and SetUp Steps
 
-git clone this repo.
+* Git clone this repo.
 
-run the following commands.
+* Run the following commands.
 
-npm init
-npm i --save express body-parser react react-dom react-router react-tap-event-plugin validator
-npm i --save-dev webpack babel-core babel-loader babel-preset-es2015 babel-preset-react nodemon
+* npm init
+
+* npm i --save express body-parser react react-dom react-router react-tap-event-plugin validator
+
+* npm i --save-dev webpack babel-core babel-loader babel-preset-es2015 babel-preset-react nodemon
 
 ### User Stories
  <a href="https://trello.com/b/Fr4PTFxN/airbnb-clone" target="_blank">User Stories</a>
