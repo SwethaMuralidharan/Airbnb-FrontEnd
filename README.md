@@ -28,7 +28,7 @@ $ npm install --save bcrypt jsonwebtoken mongoose passport passport-local
  <a href="https://trello.com/b/Fr4PTFxN/airbnb-clone" target="_blank">User Stories</a>
 
 ### Entity RelationShip Diagram
-![Alt text]('./ERD_AIRBNB.png')
+[a link](https://github.com/SwethaMuralidharan/Airbnb-FrontEnd/blob/master/ERD_AIRBNB.png)
 
 ### Planned Features
 
