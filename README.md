@@ -1,6 +1,6 @@
 ### Airbnb
 
-This app lets you to search for rental homes in various places of the world and book homes at the required cost and enjoy your vacation.
+This app lets you to search for rental homes in various places of the world and book homes at the required cost and enjoy your vacation. Users of this app can be a host as well as a guest. Host posts their rental information as listing in this app which gets listed when other users search for vacation homes in that city.
 
 ### Link for the Live App
  <a href="https://airbnb-fe.herokuapp.com/" target="_blank">Airbnb</a>
@@ -29,6 +29,9 @@ $ npm install --save bcrypt jsonwebtoken mongoose passport passport-local
 
 ### Entity RelationShip Diagram
 [ERD](https://github.com/SwethaMuralidharan/Airbnb-FrontEnd/blob/master/ERD_AIRBNB.png)
+
+### WireFrames
+
 
 ### Planned Features
 
