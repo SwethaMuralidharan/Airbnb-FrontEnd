@@ -17,7 +17,6 @@ class LoginPage extends Component {
       successMessage,
     };
     this.processForm = this.processForm.bind(this);
-    // this.changeUser = this.changeUser.bind(this);
   }
   processForm(loggedinEmail,loggedinPassword) {
     // create a string for an HTTP body message
