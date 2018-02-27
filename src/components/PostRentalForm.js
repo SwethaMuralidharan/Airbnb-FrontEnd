@@ -108,7 +108,7 @@ class PostRentalForm extends Component{
                   <input type="text" value={this.state.amenities}  onChange={e => this.setState({ amenities: e.target.value})}></input>
                 </div>
                 <div className="divpad">
-                  <p>Upload image url's of your place separated by a comma</p>
+                  <p>Provide an image url of your place</p>
                   <textarea value={this.state.image_urls} rows="3" cols="50" onChange={e => this.setState({ image_urls:e.target.value })}/>
                 </div>
                 <div className="divpad center-div">
