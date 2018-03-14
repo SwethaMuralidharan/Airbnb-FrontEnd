@@ -51,8 +51,16 @@ class BookingSummary extends Component{
         }).then((res) => {
            return res.json()
           }).then((json) => {
-             this.setState({BookingInfo: json});
-             document.getElementById(this.state.edited_booking_id).classList.remove("showEditdiv");
+            console.log(json);
+            if((json==="Error: Already booked on the selected dates")||
+               (json==="Error: Guest Count exceeded the limit")||
+               (json==="Error: Already booked on the selected dates and guest count exceeded the limit")){
+                  alert(json);
+            }
+            else{
+              this.setState({BookingInfo: json});
+              document.getElementById(this.state.edited_booking_id).classList.remove("showEditdiv");
+            }
           }))
   }
   deleteBooking(booking_id){
@@ -91,7 +99,7 @@ class BookingSummary extends Component{
     }
     else{
       return (<div className="divpad">
-                <h4 className="center-div">Booking Summary</h4>
+                <h2 className="center-div">Booking Summary</h2>
                 {this.state.BookingInfo.bookings && this.state.BookingInfo.bookings.map(each_booking=>{
                     return (
                               <div key={each_booking._id} className="container headerstyle eachmapdiv">

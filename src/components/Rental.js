@@ -92,7 +92,14 @@ class Rental extends Component{
         }).then((res) => {
           return res.json()
         }).then((json) => {
-          this.props.history.push(`/users/${Auth.getUserId()}/bookings`);
+          if((json==="Error: Already booked on the selected dates")||
+             (json==="Error: Guest Count exceeded the limit")||
+             (json==="Error: Already booked on the selected dates and guest count exceeded the limit")){
+                alert(json);
+          }
+          else{
+            this.props.history.push(`/users/${Auth.getUserId()}/bookings`);
+          }
         })
     }
   }

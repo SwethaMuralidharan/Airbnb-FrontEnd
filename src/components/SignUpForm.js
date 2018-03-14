@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css';
+import DaySelector from './DaySelector.js';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+import 'react-datepicker/dist/react-datepicker.css';
+
 
 class SignUpForm extends Component{
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state={
         currentUsername:'',
         currentEmailid:'',
         currentPassword:'',
         currentUserAddress:'',
         currentUserGender:'',
-        currentUserDob:''
+        currentUserDob:moment()
     }
     this.onUsernameChange=this.onUsernameChange.bind(this);
     this.onEmailChange=this.onEmailChange.bind(this);
@@ -36,9 +41,9 @@ class SignUpForm extends Component{
       currentUserGender:e.target.value
     })
   }
-  onUserDobChange(e){
+  onUserDobChange(date){
     this.setState({
-      currentUserDob:e.target.value
+      currentUserDob:date
     })
   }
   onEmailChange(e){
@@ -86,11 +91,15 @@ class SignUpForm extends Component{
 
                 <div className="form-group">
                   <label>Date of Birth</label>
-                  <input className="form-control"
+                  {/* <input className="form-control"
                     type="text"
                     onChange={this.onUserDobChange}
                     value={this.state.currentUserDob}
                     placeholder="YYYY-MM-DD"
+                  /> */}
+                  <DatePicker
+                      selected={this.state.currentUserDob}
+                      onChange={this.onUserDobChange}
                   />
                 </div>
 

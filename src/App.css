@@ -64,7 +64,7 @@
     flex-direction: column;
 }
 .headerstyle{
-    border-radius: 25px;
+    border-radius: 15px;
     background-color: #c1aea0;
     padding: 10px;
     padding-left: 50px;
@@ -112,4 +112,10 @@
 }
 .success-message{
     color:green;
+}
+.marker {
+  background-image: url("./marker.svg");
+  background-repeat: no-repeat;
+  height: 60px;
+  width: 60px;
 }

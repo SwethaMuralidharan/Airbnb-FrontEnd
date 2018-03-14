@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Auth from '../modules/Auth';
 import {Link} from 'react-router-dom';
 import '../App.css';
+import MapLocation from './MapLocation.js';
+
 
 class Profile extends Component{
   constructor() {
@@ -29,7 +31,9 @@ class Profile extends Component{
   render(){
     console.log(this.props);
     return (
-      <div className="col-md-6 offset-md-3 divpad setbg">
+      <div className="container">
+      <div className="row">
+      <div className="col-md-6 divpad setbg col-md-3 offset-md-3">
           <div className="headerstyle">
             <h4>User Name : {this.state.UserInfo.name}</h4>
           </div>
@@ -58,6 +62,8 @@ class Profile extends Component{
         <div className="center-div divpad">
           <Link to={`/users/${Auth.getUserId()}/bookings`} className="btn btn-primary">View My Bookings</Link>
         </div>
+      </div>
+      </div>
       </div>
     )
   }

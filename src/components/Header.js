@@ -27,7 +27,7 @@ class Header extends Component{
                 </div>
                 {Auth.isUserAuthenticated() ? (
                   <div className="col-md-3 divpad">
-                      <Link className="btn btn-primary" to={`/users/${Auth.getUserId()}`}>View Profile</Link>&nbsp;
+                      <Link className="btn btn-primary" to={`/users/${Auth.getUserId()}`}>Profile</Link>&nbsp;
                       <button className="btn btn-primary" onClick={this.logoutUser}>Logout</button>
                   </div>
                 ):(

@@ -40,14 +40,21 @@ class BookingSection extends Component{
     }
   }
   SaveBooking(e){
-    e.preventDefault();
-    console.log(this.state.from,this.state.to,this.state.guestcount,this.state.totalcost);
-    this.props.editBooking(
-                           this.state.from,
-                           this.state.to,
-                           this.state.guestcount,
-                           this.state.totalcost
-                          );
+    var today = new Date();
+    if(today>this.state.from || today>this.state.to){
+        alert("Please choose dates in future.");
+    }
+    else{
+      e.preventDefault();
+      console.log(this.state.from,this.state.to,this.state.guestcount,this.state.totalcost);
+      this.props.editBooking(
+                             this.state.from,
+                             this.state.to,
+                             this.state.guestcount,
+                             this.state.totalcost
+                            );
+    }
+
   }
   render(){
     return (

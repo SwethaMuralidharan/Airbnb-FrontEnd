@@ -33,6 +33,8 @@ $ npm install --save bcrypt jsonwebtoken mongoose passport passport-local
 ### WireFrames
 [WireFrames](https://github.com/SwethaMuralidharan/Airbnb-FrontEnd/blob/master/wireframe-airbnb.png)
 
+![Wireframes](https://github.com/SwethaMuralidharan/Airbnb-FrontEnd/blob/master/SearchResults.png)
+
 ### Planned Features
 
 * Use google maps api to show up on search page with pins as markers.

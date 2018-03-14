@@ -37,7 +37,7 @@ class LoginPage extends Component {
           console.log(xhr.response);
           Auth.authenticateUser(xhr.response.token);
           Auth.saveUserId(xhr.response.user.id);
-          this.props.history.push(`/users/${xhr.response.user.id}`);
+          this.props.history.push(`/`);
         } else {
               const errors = xhr.response.errors ? xhr.response.errors : {};
               errors.summary = xhr.response.message;
