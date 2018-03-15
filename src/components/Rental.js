@@ -13,7 +13,8 @@ class Rental extends Component{
       from:undefined,
       to:undefined,
       guestcount:0,
-      totalcost:0
+      totalcost:0,
+      Ownername:''
     }
     this.Updateguestcount=this.Updateguestcount.bind(this);
     this.handleFromChange = this.handleFromChange.bind(this);
@@ -116,11 +117,11 @@ class Rental extends Component{
       .then(res => res.json())
       .then(json => {
         console.log(json);
-        this.setState({RentalInfo: json});
+        this.setState({RentalInfo: json,Ownername: json.user_id.name});
       });
   }
   render(){
-  console.log(this.state.RentalInfo.image_urls);
+  console.log(this.state.RentalInfo);
       return (
             <div className="container">
             <div className="row">
@@ -145,6 +146,7 @@ class Rental extends Component{
             <div className="row divpad">
                   <div className="divpad col-md-4 outlineborder headerstyle">
                       <h4 className="center-div">Rental Info</h4>
+                          <p>Owner : {this.state.Ownername && this.state.Ownername}</p>
                           <p>Address : {this.state.RentalInfo && this.state.RentalInfo.address}</p>
                           <p>Number of Rooms : {this.state.RentalInfo && this.state.RentalInfo.rooms}</p>
                           <p>Number of Bathrooms : {this.state.RentalInfo && this.state.RentalInfo.bathrooms}</p>

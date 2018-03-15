@@ -32,37 +32,33 @@ class Profile extends Component{
     console.log(this.props);
     return (
       <div className="container">
-      <div className="row">
-      <div className="col-md-6 divpad setbg col-md-3 offset-md-3">
-          <div className="headerstyle">
-            <h4>User Name : {this.state.UserInfo.name}</h4>
-          </div>
-            <h5 className="left-pad">Gender : {this.state.UserInfo.gender}</h5>
-            <h5 className="left-pad">Dob : {String(this.state.UserInfo.dob).substring(0,10)}</h5>
-            <h5 className="left-pad">Address : {this.state.UserInfo.address}</h5>
-            <h5 className="left-pad">Email : {this.state.UserInfo.email}</h5>
-          <div>
-            <div className="headerstyle">
-              <h4>Places you Own</h4>
-            </div>
-            <div className="center-div">
-                <div className="divpad">
-                  <Link to={`/users/${this.state.UserInfo._id}/rentals`} className="btn btn-primary"> Add New Rental </Link>
-                </div>
-                <div className="divpad">
-                  {this.state.UserInfo.rentals && this.state.UserInfo.rentals.map(each_rental=>{
-                      return <div key={each_rental._id}><Link to={`/users/${this.state.UserInfo._id}/rentals/${each_rental._id}`}>{each_rental.address}</Link></div>
-                  })}
-                </div>
-            </div>
-         </div>
-        <div className="headerstyle">
-          <h4>Booking Summary</h4>
+      <div className="row rowpad">
+          <div className="col-md-3"></div>
+          <div className="col-md-6 postform-bg">
+              <h1 className="center-div">Hey! I'm {this.state.UserInfo.name} !</h1>
+              <div className="userInfo">
+                  <h5 className="left-pad">Gender : {this.state.UserInfo.gender}</h5>
+                  <h5 className="left-pad">Dob : {String(this.state.UserInfo.dob).substring(0,10)}</h5>
+                  <h5 className="left-pad">Address :    {this.state.UserInfo.address}</h5>
+                  <h5 className="left-pad">Email : {this.state.UserInfo.email}</h5>
+              </div><hr className="rulerstyle"/>
+              <div>
+                  <h2 className="center-div">Owned Places</h2>
+                  <div className="userInfo">
+                        {this.state.UserInfo.rentals && this.state.UserInfo.rentals.map(each_rental=>{
+                            return <div key={each_rental._id}><Link to={`/users/${this.state.UserInfo._id}/rentals/${each_rental._id}`}><h5 className="left-pad">{each_rental.address}</h5></Link></div>
+                        })}
+                  </div><hr className="rulerstyle"/>
+                  <div className="row divpad">
+                    <div className="col-md-6">
+                      <Link to={`/users/${this.state.UserInfo._id}/rentals`} className="btn btn-primary"> Add New Rental </Link>
+                    </div>
+                    <div className="col-md-6">
+                      <Link to={`/users/${Auth.getUserId()}/bookings`} className="btn btn-primary">View My Bookings</Link>
+                    </div>
+                  </div>
+             </div>
         </div>
-        <div className="center-div divpad">
-          <Link to={`/users/${Auth.getUserId()}/bookings`} className="btn btn-primary">View My Bookings</Link>
-        </div>
-      </div>
       </div>
       </div>
     )

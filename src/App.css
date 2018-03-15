@@ -103,6 +103,10 @@
 .eachmapdiv{
     padding-top: 20px;
     margin-top: 20px;
+    margin-left: 200px;
+    background-color:#c1aea0;
+    border-radius: 10px;
+    padding-bottom: 20px;
 }
 .top-pad{
     padding-top:10px;
@@ -118,4 +122,24 @@
   background-repeat: no-repeat;
   height: 60px;
   width: 60px;
+}
+.postform-bg{
+  /*background-color:#a79ebf;*/
+  background-color: #c1aea0;
+  margin:20px;
+  padding:20px;
+  border-radius: 10px;
+}
+.rulerstyle{
+    width: 100%;
+    color: black;
+    height: 0.5px;
+    background-color:black;
+}
+.userInfo{
+  padding:10px;
+  margin:10px;
+}
+.rowpad{
+  margin-top:30px;
 }

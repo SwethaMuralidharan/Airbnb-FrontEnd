@@ -102,39 +102,63 @@ class BookingSummary extends Component{
                 <h2 className="center-div">Booking Summary</h2>
                 {this.state.BookingInfo.bookings && this.state.BookingInfo.bookings.map(each_booking=>{
                     return (
-                              <div key={each_booking._id} className="container headerstyle eachmapdiv">
-                                  <div className="row">
-                                        <div className="col-sm-3 outlineborder">
-                                          Rental Location: {each_booking.rental_id && each_booking.rental_id.address}
+                              <div key={each_booking._id} className="container eachmapdiv ">
+                                  <div className="row justify-content-md-center">
+                                        <div className="col-md-4">
+                                          <h4><i>Rental Property : {each_booking.rental_id && each_booking.rental_id.address}</i></h4>
                                         </div>
-                                        <div className="col-sm-3 outlineborder">
-                                          Booking Date : {each_booking.booking_date.substring(0,10)}
+                                        <div className="col-md-4">
+                                          <h4><i>Owner Name : {each_booking.rental_id && each_booking.rental_id.user_id.name}</i></h4>
+                                        </div>
+                                        <div className="col-md-4">
+                                          <h4><i>Booking Date : {each_booking.booking_date.substring(0,10)}</i></h4>
+                                        </div>
+                                        <div className="col-md-2"></div>
+                                  </div>
+                                  <hr className="rulerstyle"/>
+                                  <div className="row">
+                                        <div className="col-md-2">
+                                          <h5>CheckIn</h5>
+                                        </div>
+                                        <div className="col-md-3">
+                                          <h5>{each_booking.start_date.substring(0,10)}</h5>
+                                        </div>
+
+                                        <div className="col-md-2">
+                                          <h5>Checkout</h5>
+                                        </div>
+                                        <div className="col-md-3">
+                                            <h5>{each_booking.end_date.substring(0,10)}</h5>
                                         </div>
                                   </div>
+
                                   <div className="row">
-                                        <div className="col-sm-3 outlineborder">
-                                          Date of arrival : {each_booking.start_date.substring(0,10)}
+                                        <div className="col-md-2">
+                                          <h5>Guests</h5>
                                         </div>
-                                        <div className="col-sm-3 outlineborder">
-                                          Date of leaving : {each_booking.end_date.substring(0,10)}
+                                        <div className="col-md-3">
+                                           <h5>{each_booking.total_guests}</h5>
                                         </div>
-                                        <div className="col-sm-3 outlineborder">
-                                          Total Guests : {each_booking.total_guests}
+
+                                        <div className="col-md-2">
+                                          <h5>Total</h5>
                                         </div>
-                                        <div className="col-sm-2 outlineborder">
-                                          Total Cost : {each_booking.total_cost}
+                                        <div className="col-md-3">
+                                          <h5>${each_booking.total_cost}</h5>
                                         </div>
                                   </div>
+                                  <hr className="rulerstyle"/>
                                   <div className="row">
-                                        <div className="col-sm-3"></div>
-                                        <div className="col-sm-3"></div>
-                                        <div className="col-sm-3 divpad">
+                                        <div className="col-md-6"></div>
+                                        <div className="col-md-3">
                                           <button className="btn btn-info btn-round" onClick={()=>this.showEditSection(each_booking._id)}>Edit</button>
                                         </div>
-                                        <div className="col-sm-3 divpad">
+                                        <div className="col-md-3">
                                           <button className="btn btn-info btn-round" onClick={()=>{if(window.confirm('Are you sure you want to delete this booking?')) {this.deleteBooking(each_booking._id)};}}>Cancel</button>
                                         </div>
+
                                   </div>
+
                                   <div className="row hideEditdiv" id={each_booking._id}>
                                         <div className="col-sm-12">
                                             <BookingSection booking_id={each_booking._id} price={each_booking.rental_id && each_booking.rental_id.price_per_night} editBooking={this.updateBooking}/>

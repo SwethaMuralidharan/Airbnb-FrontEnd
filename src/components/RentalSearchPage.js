@@ -18,6 +18,7 @@ class RentalSearchPage extends Component{
       to:undefined,
       price:undefined,
       guestcount:0,
+      searchTerm:''
     }
     this.handleFromChange = this.handleFromChange.bind(this);
     this.handleToChange = this.handleToChange.bind(this);
@@ -61,13 +62,18 @@ class RentalSearchPage extends Component{
           console.log(json);
           this.setState(
             {RentalInfo:json},
-            ()=>{(this.state.RentalInfo.length===0)?(document.getElementById("searchresult").classList.add("showEditdiv")):null}
+            ()=>{(this.state.RentalInfo.length===0)?(document.getElementById("searchresult").classList.add("showEditdiv")):document.getElementById("searchresult").classList.remove("showEditdiv")}
           );
         });
     }
     else{
       alert("Please choose both price range and number of guests.");
     }
+  }
+  componentDidMount(){
+    this.setState({
+      searchTerm:this.props.match.params.searchTerm
+    })
   }
   render(){
     return (<div className="container divpad">
@@ -104,10 +110,13 @@ class RentalSearchPage extends Component{
                     })}
                 </div>
                 <div className="col-md-6 divpad">
-                  <MapLocation />
+                   {(this.props.match.params.searchTerm==="SanFrancisco")?
+                  (<MapLocation lat={37.77} lng={-122.419} />):
+                  ((this.props.match.params.searchTerm==="Oregon")?(<MapLocation lat={45.522794} lng={ -122.679565} />)
+                  :(<MapLocation lat={40.785} lng={-73.968} />))
+                }
                 </div>
               </div>
-
           </div>)
   }
 }

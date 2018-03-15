@@ -12,17 +12,18 @@ class MapLocation extends Component {
    }
   }
   componentDidMount() {
-      this.setState({ center: [45.512794, -122.679565 ] })
+      this.setState({ center: [this.props.lat, this.props.lng] })
   }
   render() {
+    console.log(this.props.lat);
     return (
       <GoogleMapReact
         bootstrapURLKeys={{ key: ["AIzaSyCznXuWM0IZkFv8LW8Zld2Wnvc8qSFpR1w"] }}
         center={ this.state.center }
         zoom={ this.state.zoom }
       >
-      <div className="marker" lat={ this.state.center[0] } lng={ this.state.center[1] }></div>
-      <div className="marker" lat={ 44.552794 } lng={ -123.709565 }></div>
+      <div className="marker" lat={ this.props.lat} lng={ this.props.lng }></div>
+      <div className="marker" lat={ this.props.lat-0.2 } lng={ this.props.lng-0.2 }></div>
       </GoogleMapReact>
     );
   }

@@ -77,9 +77,56 @@ class PostRentalForm extends Component{
   render(){
     return (
             <div className="divpad center-div">
-              <form onSubmit ={this.PostRental}>
-                <div><h4>Post your rental as a listing in Airbnb!</h4></div>
-                <div className="divpad">
+              <form onSubmit ={this.PostRental} className="postform-bg">
+                <div><h2 className="center-div">Post your rental as a listing here!</h2></div><br/>
+                <div className="container">
+                  <div className="row">
+                    <div className="col-md-6">
+                      <p>How many guests can your place accomodate?</p>
+                      <IncrementDecrement updatecount={this.Updateguestcount}/>
+                    </div>
+                    <div className="col-md-6">
+                      <p>How many rooms can the guests use?</p>
+                      <IncrementDecrement updatecount={this.Updateroomcount}/>
+                    </div>
+                  </div>
+                  <div className="row top-pad">
+                    <div className="col-md-6">
+                      <p>How many beds can the guests use?</p>
+                      <IncrementDecrement updatecount={this.Updatebedcount}/>
+                    </div>
+                    <div className="col-md-6">
+                      <p>How many bathrooms can guests use?</p>
+                      <IncrementDecrement updatecount={this.Updatebathcount}/>
+                    </div>
+                  </div>
+                  <div className="row top-pad">
+                    <div className="col-md-6">
+                      <p>Where is this listing located?</p>
+                      <input type="text" value={this.state.address} onChange={e => this.setState({ address: e.target.value})}></input>
+                    </div>
+                    <div className="col-md-6">
+                      <p>What is the price per night?</p>
+                      <input type="text" value={this.state.price_per_night} onChange={e => this.setState({ price_per_night: e.target.value})}></input>
+                    </div>
+                  </div>
+                  <div className="row top-pad">
+                    <div className="col-md-6">
+                      <p>What are the amenities provided?</p>
+                      <input type="text" value={this.state.amenities}  onChange={e => this.setState({ amenities: e.target.value})}></input>
+                    </div>
+                    <div className="col-md-6">
+                      <p>Provide an image url of your place</p>
+                      <textarea value={this.state.image_urls} rows="3" cols="30" onChange={e => this.setState({ image_urls:e.target.value })}/>
+                    </div>
+                  </div>
+                  <div className="row top-pad center-div">
+                    <div className="col-md-4">
+                      <button className="btn btn-primary btn-round">POST</button>
+                    </div>
+                  </div>
+                </div>
+                {/* <div className="divpad">
                   <p>How many guests can your place accomodate?</p>
                   <IncrementDecrement updatecount={this.Updateguestcount}/>
                 </div>
@@ -94,8 +141,8 @@ class PostRentalForm extends Component{
                 <div className="divpad">
                   <p>How many bathrooms can the guests use?</p>
                   <IncrementDecrement updatecount={this.Updatebathcount}/>
-                </div>
-                <div className="divpad">
+                </div> */}
+                {/* <div className="divpad">
                   <p>Where is this listing located?</p>
                   <input type="text" value={this.state.address} onChange={e => this.setState({ address: e.target.value})}></input>
                 </div>
@@ -106,14 +153,14 @@ class PostRentalForm extends Component{
                 <div className="divpad">
                   <p>What are the amenities provided?</p>
                   <input type="text" value={this.state.amenities}  onChange={e => this.setState({ amenities: e.target.value})}></input>
-                </div>
-                <div className="divpad">
+                </div> */}
+                {/* <div className="divpad">
                   <p>Provide an image url of your place</p>
                   <textarea value={this.state.image_urls} rows="3" cols="50" onChange={e => this.setState({ image_urls:e.target.value })}/>
                 </div>
                 <div className="divpad center-div">
                   <button className="btn btn-primary btn-round">POST</button>
-                </div>
+                </div> */}
             </form>
             </div>
           )
