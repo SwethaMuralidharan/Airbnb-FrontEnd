@@ -45,9 +45,12 @@ class Profile extends Component{
               <div>
                   <h2 className="center-div">Owned Places</h2>
                   <div className="userInfo">
-                        {this.state.UserInfo.rentals && this.state.UserInfo.rentals.map(each_rental=>{
-                            return <div key={each_rental._id}><Link to={`/users/${this.state.UserInfo._id}/rentals/${each_rental._id}`}><h5 className="left-pad">{each_rental.address}</h5></Link></div>
-                        })}
+                        {this.state.UserInfo.rentals && (this.state.UserInfo.rentals.length===0)?
+                                (<h5 className="left-pad"><i>No rental places owned.</i></h5>):
+                                (this.state.UserInfo.rentals && this.state.UserInfo.rentals.map(each_rental=>{
+                                  return <div key={each_rental._id}><Link to={`/users/${this.state.UserInfo._id}/rentals/${each_rental._id}`}><h5 className="left-pad">{each_rental.address}</h5></Link></div>
+                                }))
+                        }
                   </div><hr className="rulerstyle"/>
                   <div className="row divpad">
                     <div className="col-md-6">
