@@ -102,7 +102,7 @@ class BookingSummary extends Component{
                 <h2 className="center-div">Booking Summary</h2>
                 {this.state.BookingInfo.bookings && this.state.BookingInfo.bookings.map(each_booking=>{
                     return (
-                              <div key={each_booking._id} className="container eachmapdiv ">
+                              <div key={each_booking._id} className="container eachmapdiv">
                                   <div className="row justify-content-md-center">
                                         <div className="col-md-4">
                                           <h4><i>Rental Property : {each_booking.rental_id && each_booking.rental_id.address}</i></h4>

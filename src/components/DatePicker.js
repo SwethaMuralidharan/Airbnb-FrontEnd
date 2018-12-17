@@ -51,7 +51,7 @@ export default class DatePicker extends React.Component {
     const modifiers = { start: from, end: to };
     return (
       <div className="InputFromTo">
-        <label>Choose your days of stay :  </label>
+        <p>Choose your days of stay :  </p>
         <DayPickerInput
           value={from}
           placeholder="From"

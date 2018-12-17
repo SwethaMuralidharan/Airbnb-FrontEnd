@@ -4,6 +4,7 @@ import '../App.css';
 import './Profile.js';
 import DatePicker from './DatePicker.js';
 import IncrementDecrement from './IncrementDecrement.js';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Rental extends Component{
   constructor() {
@@ -145,16 +146,21 @@ class Rental extends Component{
             </div>
             <div className="row divpad">
                   <div className="divpad col-md-4 outlineborder headerstyle">
-                      <h4 className="center-div">Rental Info</h4>
-                          <p>Owner : {this.state.Ownername && this.state.Ownername}</p>
-                          <p>Address : {this.state.RentalInfo && this.state.RentalInfo.address}</p>
-                          <p>Number of Rooms : {this.state.RentalInfo && this.state.RentalInfo.rooms}</p>
-                          <p>Number of Bathrooms : {this.state.RentalInfo && this.state.RentalInfo.bathrooms}</p>
-                          <p>Maximum guests : {this.state.RentalInfo && this.state.RentalInfo.max_guest}</p>
+                      <h4 className="center-div">Rental @ {this.state.RentalInfo && this.state.RentalInfo.address}</h4>
+                          <p className="ownername">Owner : {this.state.Ownername && this.state.Ownername}</p>
+
+
                           <p>Amenities : {this.state.RentalInfo && this.state.RentalInfo.amenities}</p>
-                          <p>Price per night : ${this.state.RentalInfo && this.state.RentalInfo.price_per_night}</p>
+
+                          <FontAwesomeIcon icon="bed" /> {this.state.RentalInfo && this.state.RentalInfo.rooms} bedroom &ensp;
+                          <FontAwesomeIcon icon="bath" /> {this.state.RentalInfo && this.state.RentalInfo.bathrooms} bathroom &ensp;
+                          <FontAwesomeIcon icon="users" /> {this.state.RentalInfo && this.state.RentalInfo.max_guest} guests &ensp;
+
+
+
+
                           {(this.props.match.params.user_id===Auth.getUserId())?
-                            (<div className="center-div">
+                            (<div className="divpad bookingbtn">
                                 <button className="btn btn-primary" onClick={()=>{if(window.confirm('Are you sure you want to delete this listing?')) {this.deleteRental(this.props.match.params.rental_id)};}}>Delete</button>
                             </div>)
                           :null}
@@ -163,11 +169,16 @@ class Rental extends Component{
                   <div className="divpad col-md-8 outlineborder headerstyle">
                       <h4 className="center-div">Booking Section</h4>
                       <form onSubmit={this.bookrental}>
-                          <DatePicker changeFromDate={this.handleFromChange} changeToDate={this.handleToChange}/>
-                          <label> Choose Number of Guests:</label>
-                          <IncrementDecrement updatecount={this.Updateguestcount}/>
-                          <label className="top-pad">Total Cost : {this.state.totalcost}</label>
-                          <div className="divpad"><button className="btn btn-primary" >Save Booking</button></div>
+                          <div className="pickdate">
+                            <DatePicker changeFromDate={this.handleFromChange} changeToDate={this.handleToChange}/>
+                            <p className="top-pad">Price per night : ${this.state.RentalInfo && this.state.RentalInfo.price_per_night}</p>
+                          </div>
+                          <div className="pickguests">
+                            <label> Choose Number of Guests:</label>
+                            <IncrementDecrement updatecount={this.Updateguestcount}/>
+                            <label className="top-pad">Total Cost : {this.state.totalcost}</label>
+                          </div>
+                          <div className="bookingbtn"><button className="btn btn-primary">Save Booking</button></div>
                       </form>
                   </div>
             </div>

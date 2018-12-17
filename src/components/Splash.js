@@ -12,13 +12,13 @@ class Splash extends Component {
             </ol>
             <div className="carousel-inner">
               <div className="carousel-item active">
-                <img className="d-block w-100" src="https://a0.muscache.com/im/pictures/3e0d73ef-2da5-4a02-b97f-c6232e29336c.jpg?aki_policy=large" alt="First slide"/>
+                <img className="d-block" src="https://a0.muscache.com/im/pictures/3e0d73ef-2da5-4a02-b97f-c6232e29336c.jpg?aki_policy=large" alt="First slide"/>
               </div>
               <div className="carousel-item">
-                <img className="d-block w-100" src="https://a0.muscache.com/im/pictures/92df2e8d-a1fc-4fe8-97df-7d975a842c6d.jpg?aki_policy=large" alt="Second slide"/>
+                <img className="d-block"  src="https://a0.muscache.com/im/pictures/92df2e8d-a1fc-4fe8-97df-7d975a842c6d.jpg?aki_policy=large" alt="Second slide"/>
               </div>
               <div className="carousel-item">
-                <img className="d-block w-100" src="https://a0.muscache.com/im/pictures/349608fe-1bf8-4f99-8e5c-ae500cb4a2c5.jpg?aki_policy=large" alt="Third slide"/>
+                <img className="d-block"  src="https://a0.muscache.com/im/pictures/349608fe-1bf8-4f99-8e5c-ae500cb4a2c5.jpg?aki_policy=large" alt="Third slide"/>
               </div>
             </div>
             <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

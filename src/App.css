@@ -36,12 +36,34 @@
     border-radius: 6px;
     background-color: #fff;
 }
+#carouselExampleIndicators{
+  width:1000px;
+}
+#carouselExampleIndicators .carousel-inner{
+  width:100%;
+  margin:0 15%;
+}
+#carouselExampleIndicators img{
+  width:70%;
+}
 
 #custom-search-input input{
     border: 0;
     box-shadow: none;
 }
-
+.pickdate{
+  display: inline-block;
+}
+.pickguests{
+  display: inline-block;
+  margin-left:10%;
+}
+.bookingbtn{
+  text-align: center;
+}
+.ownername{
+  text-align: center;
+}
 #custom-search-input button{
     margin: 2px 0 0 0;
     background: none;
@@ -86,7 +108,8 @@
     padding:10px;
 }
 .header{
-    background-color: #c1aea0;
+    background-color: #66CCFF;
+/*#c1aea0;*/
 }
 .hideEditdiv{
     display: none;
@@ -95,7 +118,8 @@
     display:block;
 }
 .setbodybg{
-    background-color:#edeae8;
+    background-color:#66CCCC;
+/*#edeae8;*/
 }
 .alertmsg{
     color: red;
@@ -103,7 +127,7 @@
 .eachmapdiv{
     padding-top: 20px;
     margin-top: 20px;
-    margin-left: 300px;
+    margin-left: 100px;
     background-color:#c1aea0;
     border-radius: 10px;
     padding-bottom: 20px;
@@ -124,7 +148,6 @@
   width: 60px;
 }
 .postform-bg{
-  /*background-color:#a79ebf;*/
   background-color: #c1aea0;
   margin:20px;
   padding:20px;
