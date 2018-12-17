@@ -99,7 +99,7 @@ class BookingSummary extends Component{
     }
     else{
       return (<div className="divpad">
-                <h2 className="center-div">Booking Summary</h2>
+                <h2 className="center-div uname">Booking Summary</h2>
                 {this.state.BookingInfo.bookings && this.state.BookingInfo.bookings.map(each_booking=>{
                     return (
                               <div key={each_booking._id} className="container eachmapdiv">

@@ -35,7 +35,7 @@ class Profile extends Component{
       <div className="row rowpad">
           <div className="col-md-3"></div>
           <div className="col-md-6 postform-bg">
-              <h1 className="center-div">Hey! I'm {this.state.UserInfo.name} !</h1>
+              <h1 className="center-div uname">Hey! I'm {this.state.UserInfo.name} !</h1>
               <div className="userInfo">
                   <h5 className="left-pad">Gender : {this.state.UserInfo.gender}</h5>
                   <h5 className="left-pad">Dob : {String(this.state.UserInfo.dob).substring(0,10)}</h5>
@@ -43,7 +43,7 @@ class Profile extends Component{
                   <h5 className="left-pad">Email : {this.state.UserInfo.email}</h5>
               </div><hr className="rulerstyle"/>
               <div>
-                  <h2 className="center-div">Owned Places</h2>
+                  <h2 className="center-div uname">Owned Places</h2>
                   <div className="userInfo">
                         {this.state.UserInfo.rentals && (this.state.UserInfo.rentals.length===0)?
                                 (<h5 className="left-pad"><i>No rental places owned.</i></h5>):

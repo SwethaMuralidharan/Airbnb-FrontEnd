@@ -146,7 +146,7 @@ class Rental extends Component{
             </div>
             <div className="row divpad">
                   <div className="divpad col-md-4 outlineborder headerstyle">
-                      <h4 className="center-div">Rental @ {this.state.RentalInfo && this.state.RentalInfo.address}</h4>
+                      <h4 className="center-div uname">Rental @ {this.state.RentalInfo && this.state.RentalInfo.address}</h4>
                           <p className="ownername">Owner : {this.state.Ownername && this.state.Ownername}</p>
 
 
@@ -167,7 +167,7 @@ class Rental extends Component{
                   </div>
 
                   <div className="divpad col-md-8 outlineborder headerstyle">
-                      <h4 className="center-div">Booking Section</h4>
+                      <h4 className="center-div uname">Booking Section</h4>
                       <form onSubmit={this.bookrental}>
                           <div className="pickdate">
                             <DatePicker changeFromDate={this.handleFromChange} changeToDate={this.handleToChange}/>

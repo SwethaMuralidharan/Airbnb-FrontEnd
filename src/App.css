@@ -51,6 +51,9 @@
     border: 0;
     box-shadow: none;
 }
+.uname{
+   text-shadow: 2px 2px #FF0000;
+}
 .pickdate{
   display: inline-block;
 }
@@ -119,7 +122,6 @@
 }
 .setbodybg{
     background-color:#66CCCC;
-/*#edeae8;*/
 }
 .alertmsg{
     color: red;

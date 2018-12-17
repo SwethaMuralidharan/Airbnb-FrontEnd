@@ -78,7 +78,7 @@ class PostRentalForm extends Component{
     return (
             <div className="divpad center-div">
               <form onSubmit ={this.PostRental} className="postform-bg">
-                <div><h2 className="center-div">Post your rental as a listing here!</h2></div><br/>
+                <div><h2 className="center-div uname">Post your rental as a listing here!</h2></div><br/>
                 <div className="container">
                   <div className="row">
                     <div className="col-md-6">
